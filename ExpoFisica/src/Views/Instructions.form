@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel1" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jScrollPane1" alignment="0" pref="613" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnBack" min="-2" pref="39" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="420" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Microsoft YaHei" size="35" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Instructions for use"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextArea1">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Microsoft YaHei UI" size="20" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="lineWrap" type="boolean" value="true"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="# User Guide for Pharmacy Management Application&#xa;&#xa;## Roles and Permissions&#xa;&#xa;### Owner and Administrators&#xa;- **Owner**: Full access to all functions.&#xa;- **Administrators**: Same permissions as the owner, designated by the owner.&#xa;&#xa;### Auxiliaries&#xa;- Limited access to functions related to:&#xa;  - Product purchases or inquiries.&#xa;  - Queries regarding suppliers, customers, and reports.&#xa;&#xa;## Registration&#xa;&#xa;To start using the application, you need to register. The registration button will be disabled after you register, so ensure you choose a username, password, and other details carefully. Upon registration, you will assume the role of the Owner.&#xa;&#xa;### Steps to Register:&#xa;1. Navigate to the login window (the one with the image of a vase).&#xa;2. Click the &quot;Sign up&quot; button.&#xa;3. In the registration window (the one with the image of a building), fill in your details.&#xa;4. Read the terms and conditions (recommended).&#xa;5. Press the &quot;Register&quot; button.&#xa;&#xa;## Logging In&#xa;&#xa;### Steps to Log In:&#xa;1. Enter your username and password in the login window.&#xa;2. Press &quot;Start.&quot;&#xa;&#xa;## Navigating the Application&#xa;&#xa;Upon logging in, you will be redirected to the administration panel.&#xa;&#xa;### Navigation:&#xa;- A menu on the left side contains various sections.&#xa;- To navigate, hover over a section label and click to be redirected to the corresponding panel.&#xa;&#xa;## Cancelling Actions&#xa;&#xa;Each section has a &quot;Cancel&quot; button. Press it to stop the current action and clear the fields.&#xa;&#xa;## Employee Management&#xa;&#xa;### Registering an Employee:&#xa;1. Go to the employee panel in the Administration window.&#xa;2. Click on the employee section in the left menu.&#xa;3. Fill in the employee&apos;s details and select their role (Administrator or Auxiliary).&#xa;4. Press the &quot;Register&quot; button.&#xa;&#xa;### Modifying an Employee:&#xa;1. In the employee panel, select the employee you wish to modify.&#xa;2. Update the fields with the new details.&#xa;3. Press the &quot;Modify&quot; button.&#xa;&#xa;### Deleting an Employee:&#xa;1. In the employee panel, select the employee you wish to delete.&#xa;2. Press the &quot;Delete&quot; button.&#xa;&#xa;## Customer Management&#xa;&#xa;### Registering a Customer:&#xa;1. Go to the customer panel in the Administration window.&#xa;2. Click on the customer section in the left menu.&#xa;3. Fill in the customer&apos;s details.&#xa;4. Press the &quot;Register&quot; button.&#xa;&#xa;### Modifying a Customer:&#xa;1. In the customer panel, select the customer you wish to modify.&#xa;2. Update the fields with the new details.&#xa;3. Press the &quot;Modify&quot; button.&#xa;&#xa;### Deleting a Customer:&#xa;1. In the customer panel, select the customer you wish to delete.&#xa;2. Press the &quot;Delete&quot; button.&#xa;&#xa;## Supplier Management&#xa;&#xa;### Registering a Supplier:&#xa;1. Go to the supplier panel in the Administration window.&#xa;2. Click on the supplier section in the left menu.&#xa;3. Fill in the supplier&apos;s details.&#xa;4. Press the &quot;Register&quot; button.&#xa;&#xa;### Modifying a Supplier:&#xa;1. In the supplier panel, select the supplier you wish to modify.&#xa;2. Update the fields with the new details.&#xa;3. Press the &quot;Modify&quot; button.&#xa;&#xa;### Deleting a Supplier:&#xa;1. In the supplier panel, select the supplier you wish to delete.&#xa;2. Press the &quot;Delete&quot; button.&#xa;&#xa;## Category Management&#xa;&#xa;### Registering a Category:&#xa;1. Go to the category panel in the Administration window.&#xa;2. Click on the category section in the left menu.&#xa;3. Enter the category name and other details.&#xa;4. Press the &quot;Register&quot; button.&#xa;&#xa;### Modifying a Category:&#xa;1. In the category panel, select the category you wish to modify.&#xa;2. Update the fields with the new details.&#xa;3. Press the &quot;Modify&quot; button.&#xa;&#xa;### Deleting a Category:&#xa;1. In the category panel, select the category you wish to delete.&#xa;2. Press the &quot;Delete&quot; button.&#xa;&#xa;## Product Management&#xa;&#xa;### Registering a Product:&#xa;1. Ensure you have at least one category registered.&#xa;2. Go to the product panel.&#xa;3. Fill in the product details and select its category.&#xa;4. Press the &quot;Register&quot; button.&#xa;&#xa;### Modifying a Product:&#xa;1. In the product panel, select the product you wish to modify.&#xa;2. Update the fields with the new details.&#xa;3. Press the &quot;Modify&quot; button.&#xa;&#xa;### Deleting a Product:&#xa;1. In the product panel, select the product you wish to delete.&#xa;2. Press the &quot;Delete&quot; button.&#xa;&#xa;## Purchases&#xa;&#xa;### Registering Purchases in Process:&#xa;1. Ensure you have at least one product, customer, and supplier registered.&#xa;2. Go to the purchase panel.&#xa;3. Select the product, customer, and supplier, then fill in the &quot;Quantity&quot; field.&#xa;4. Click &quot;Add&quot; to finalize each purchase.&#xa;5. Click &quot;Buy&quot; to complete and record the purchase in the Reports section.&#xa;&#xa;### Deleting a Purchase in Process:&#xa;1. Select the purchase in process you wish to delete.&#xa;2. Press the &quot;Delete&quot; button."/>
+                <Property name="wrapStyleWord" type="boolean" value="true"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+                <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="66" red="66" type="rgb"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JButton" name="btnBack">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Images/ImageBack (1).png"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
