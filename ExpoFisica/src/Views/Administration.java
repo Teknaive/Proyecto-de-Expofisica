@@ -2,18 +2,21 @@ package Views;
 
 import Controllers.AdministrationConfigurations;
 import Controllers.ElectricConsumeController;
+import Controllers.FieldEController;
 
 import Controllers.UserController;
 
 import Models.UsersActions;
 import Interfaces.GraphicalConfiguration;
 import Models.ElectricConsumeActions;
+import Models.FieldEActions;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class Administration extends javax.swing.JFrame implements GraphicalConfiguration {
 
     private final UsersActions employeeActions = UsersActions.getInstance(); // Initialize UsersActions instance
     private final ElectricConsumeActions electricConsumeActions = ElectricConsumeActions.getInstance();
+    private final FieldEActions fieldEActions = FieldEActions.getInstance();
 
     /**
      * Creates new form Administración
@@ -34,6 +37,9 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
 
         ElectricConsumeController electricConsumeController = new ElectricConsumeController(this, electricConsumeActions, employeeActions);
         electricConsumeController.loadConsume();
+
+        FieldEController fieldEController = new FieldEController(this, fieldEActions, employeeActions);
+        fieldEController.loadFieldsE();
         this.repaint(); // Refresh the frame to reflect any changes
     }
 
@@ -100,37 +106,27 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         txtPurchaseProductID = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
         txtPurchaseProductQuantity = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        cmbPurchasesSupplier = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         txtPurchasePrice = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         txtPurchaseTotal = new javax.swing.JTextField();
-        btnPurchaseAdd = new javax.swing.JButton();
+        btnRegistrarCampo = new javax.swing.JButton();
         btnPurchaseBuy = new javax.swing.JButton();
         btnPurchaseDelete = new javax.swing.JButton();
         btnPurchaseCancel = new javax.swing.JButton();
-        cmbPurchasesProduct = new javax.swing.JComboBox<>();
-        cmbPurchasesCustomer = new javax.swing.JComboBox<>();
         jLabel29 = new javax.swing.JLabel();
         txtPurchaseID = new javax.swing.JTextField();
+        txtPurchasePrice1 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         purchaseTable = new javax.swing.JTable();
         jPanel14 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
-        lblCustomerEmail = new javax.swing.JLabel();
-        txtCustomerMail = new javax.swing.JTextField();
         lblCustomerName = new javax.swing.JLabel();
         txtCustomerName = new javax.swing.JTextField();
-        lblCustomerAddress = new javax.swing.JLabel();
-        txtCustomerAddress = new javax.swing.JTextField();
         lblCustomerID = new javax.swing.JLabel();
         txtCustomerID = new javax.swing.JTextField();
-        lblCustomerTelephone = new javax.swing.JLabel();
-        txtCustomerTelephone = new javax.swing.JTextField();
         btnCustomerRegister = new javax.swing.JButton();
         btnCustomerModify = new javax.swing.JButton();
         btnCustomerDelete = new javax.swing.JButton();
@@ -829,7 +825,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jPanel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel21.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Purchasing Panel", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Microsoft YaHei", 1, 15), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Campos E.", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Microsoft YaHei", 1, 15), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel21.setForeground(new java.awt.Color(0, 0, 0));
         jPanel21.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel21.setPreferredSize(new java.awt.Dimension(829, 245));
@@ -838,13 +834,13 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jLabel21.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("Product:");
+        jLabel21.setText("ID:");
 
         jLabel22.setBackground(new java.awt.Color(255, 255, 255));
         jLabel22.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setText("Product ID:");
+        jLabel22.setText("Carga (C):");
 
         txtPurchaseProductID.setEditable(false);
         txtPurchaseProductID.setBackground(new java.awt.Color(255, 255, 255));
@@ -857,12 +853,6 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         txtPurchaseProductID.setEnabled(false);
         txtPurchaseProductID.setSelectionColor(new java.awt.Color(102, 102, 255));
 
-        jLabel23.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel23.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("Quantity:");
-
         txtPurchaseProductQuantity.setBackground(new java.awt.Color(255, 255, 255));
         txtPurchaseProductQuantity.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
         txtPurchaseProductQuantity.setForeground(new java.awt.Color(0, 0, 0));
@@ -871,32 +861,24 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         txtPurchaseProductQuantity.setCaretColor(new java.awt.Color(0, 0, 0));
         txtPurchaseProductQuantity.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtPurchaseProductQuantity.setSelectionColor(new java.awt.Color(102, 102, 255));
-
-        jLabel24.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel24.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("Supplier:");
-
-        cmbPurchasesSupplier.setBackground(new java.awt.Color(255, 255, 255));
-        cmbPurchasesSupplier.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
-        cmbPurchasesSupplier.setForeground(new java.awt.Color(0, 0, 0));
-        cmbPurchasesSupplier.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cmbPurchasesSupplier.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtPurchaseProductQuantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPurchaseProductQuantityActionPerformed(evt);
+            }
+        });
 
         jLabel25.setBackground(new java.awt.Color(255, 255, 255));
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(0, 0, 0));
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setText("Customer:");
+        jLabel25.setText("Angulo (°):");
 
         jLabel26.setBackground(new java.awt.Color(255, 255, 255));
         jLabel26.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText("Purchase price:");
+        jLabel26.setText("Distancia (m):");
 
-        txtPurchasePrice.setEditable(false);
         txtPurchasePrice.setBackground(new java.awt.Color(255, 255, 255));
         txtPurchasePrice.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
         txtPurchasePrice.setForeground(new java.awt.Color(0, 0, 0));
@@ -904,14 +886,13 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         txtPurchasePrice.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPurchasePrice.setCaretColor(new java.awt.Color(0, 0, 0));
         txtPurchasePrice.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtPurchasePrice.setEnabled(false);
         txtPurchasePrice.setSelectionColor(new java.awt.Color(102, 102, 255));
 
         jLabel28.setBackground(new java.awt.Color(255, 255, 255));
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(0, 0, 0));
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("Total:");
+        jLabel28.setText("Resultado:");
 
         txtPurchaseTotal.setEditable(false);
         txtPurchaseTotal.setBackground(new java.awt.Color(255, 255, 255));
@@ -924,47 +905,36 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         txtPurchaseTotal.setEnabled(false);
         txtPurchaseTotal.setSelectionColor(new java.awt.Color(102, 102, 255));
 
-        btnPurchaseAdd.setBackground(new java.awt.Color(255, 255, 255));
-        btnPurchaseAdd.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnPurchaseAdd.setForeground(new java.awt.Color(0, 0, 0));
-        btnPurchaseAdd.setText("Add");
-        btnPurchaseAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrarCampo.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegistrarCampo.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnRegistrarCampo.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegistrarCampo.setText("Registrar");
+        btnRegistrarCampo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnPurchaseBuy.setBackground(new java.awt.Color(255, 255, 255));
         btnPurchaseBuy.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         btnPurchaseBuy.setForeground(new java.awt.Color(0, 0, 0));
-        btnPurchaseBuy.setText("Buy");
+        btnPurchaseBuy.setText("Modificar");
         btnPurchaseBuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnPurchaseDelete.setBackground(new java.awt.Color(255, 255, 255));
         btnPurchaseDelete.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         btnPurchaseDelete.setForeground(new java.awt.Color(0, 0, 0));
-        btnPurchaseDelete.setText("Delete");
+        btnPurchaseDelete.setText("Eliminar");
         btnPurchaseDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnPurchaseCancel.setBackground(new java.awt.Color(255, 255, 255));
         btnPurchaseCancel.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         btnPurchaseCancel.setForeground(new java.awt.Color(0, 0, 0));
-        btnPurchaseCancel.setText("Cancel");
+        btnPurchaseCancel.setText("Cancelar");
         btnPurchaseCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        cmbPurchasesProduct.setBackground(new java.awt.Color(255, 255, 255));
-        cmbPurchasesProduct.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
-        cmbPurchasesProduct.setForeground(new java.awt.Color(0, 0, 0));
-        cmbPurchasesProduct.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        cmbPurchasesCustomer.setBackground(new java.awt.Color(255, 255, 255));
-        cmbPurchasesCustomer.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
-        cmbPurchasesCustomer.setForeground(new java.awt.Color(0, 0, 0));
-        cmbPurchasesCustomer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel29.setBackground(new java.awt.Color(255, 255, 255));
         jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(0, 0, 0));
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel29.setText("Purchase ID:");
+        jLabel29.setText("Direccion:");
 
-        txtPurchaseID.setEditable(false);
         txtPurchaseID.setBackground(new java.awt.Color(255, 255, 255));
         txtPurchaseID.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
         txtPurchaseID.setForeground(new java.awt.Color(0, 0, 0));
@@ -972,8 +942,16 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         txtPurchaseID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPurchaseID.setCaretColor(new java.awt.Color(0, 0, 0));
         txtPurchaseID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtPurchaseID.setEnabled(false);
         txtPurchaseID.setSelectionColor(new java.awt.Color(102, 102, 255));
+
+        txtPurchasePrice1.setBackground(new java.awt.Color(255, 255, 255));
+        txtPurchasePrice1.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtPurchasePrice1.setForeground(new java.awt.Color(0, 0, 0));
+        txtPurchasePrice1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPurchasePrice1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtPurchasePrice1.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtPurchasePrice1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtPurchasePrice1.setSelectionColor(new java.awt.Color(102, 102, 255));
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
@@ -986,23 +964,20 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPurchaseProductID)
-                            .addComponent(txtPurchaseProductQuantity)
-                            .addComponent(cmbPurchasesSupplier, 0, 200, Short.MAX_VALUE)
-                            .addComponent(cmbPurchasesProduct, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPurchaseProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPurchaseProductQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPurchaseID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                            .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addComponent(btnPurchaseAdd)
-                        .addGap(18, 18, 18)
+                        .addComponent(btnRegistrarCampo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPurchaseBuy)
                         .addGap(18, 18, 18)
                         .addComponent(btnPurchaseDelete)
@@ -1011,10 +986,9 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtPurchasePrice)
-                    .addComponent(cmbPurchasesCustomer, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtPurchaseTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPurchaseID))
-                .addContainerGap(81, Short.MAX_VALUE))
+                    .addComponent(txtPurchaseTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(txtPurchasePrice1))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1024,33 +998,27 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                     .addComponent(jLabel21)
                     .addComponent(jLabel26)
                     .addComponent(txtPurchasePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbPurchasesProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel22)
-                        .addComponent(txtPurchaseProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel25))
-                    .addComponent(cmbPurchasesCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(txtPurchaseProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel25)
                     .addComponent(txtPurchaseProductQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPurchaseTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel28))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(txtPurchasePrice1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(cmbPurchasesSupplier)
+                    .addComponent(txtPurchaseTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28)
                     .addComponent(jLabel29)
                     .addComponent(txtPurchaseID, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPurchaseAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPurchaseBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPurchaseDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPurchaseCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnPurchaseBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPurchaseDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPurchaseCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRegistrarCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58))
         );
 
         purchaseTable.setBackground(new java.awt.Color(255, 255, 255));
@@ -1062,11 +1030,11 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
 
             },
             new String [] {
-                "Purchase ID", "Product ID", "Product", "Quantity", "Purchase price", "Supplier", "Customer"
+                "ID", "Carga (C)", "Direccion", "Distancia (m)", "Angulo (°)", "Resultado:"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1111,26 +1079,11 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Customer Panel", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Microsoft YaHei UI", 1, 15), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel22.setForeground(new java.awt.Color(0, 0, 0));
 
-        lblCustomerEmail.setBackground(new java.awt.Color(255, 255, 255));
-        lblCustomerEmail.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        lblCustomerEmail.setForeground(new java.awt.Color(0, 0, 0));
-        lblCustomerEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCustomerEmail.setText("Mail:");
-
-        txtCustomerMail.setBackground(new java.awt.Color(255, 255, 255));
-        txtCustomerMail.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtCustomerMail.setForeground(new java.awt.Color(0, 0, 0));
-        txtCustomerMail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCustomerMail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtCustomerMail.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtCustomerMail.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtCustomerMail.setSelectionColor(new java.awt.Color(102, 102, 255));
-
         lblCustomerName.setBackground(new java.awt.Color(255, 255, 255));
         lblCustomerName.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         lblCustomerName.setForeground(new java.awt.Color(0, 0, 0));
         lblCustomerName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCustomerName.setText("Name:");
+        lblCustomerName.setText("Carga:");
 
         txtCustomerName.setBackground(new java.awt.Color(255, 255, 255));
         txtCustomerName.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
@@ -1139,21 +1092,6 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         txtCustomerName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtCustomerName.setCaretColor(new java.awt.Color(0, 0, 0));
         txtCustomerName.setSelectionColor(new java.awt.Color(102, 102, 255));
-
-        lblCustomerAddress.setBackground(new java.awt.Color(255, 255, 255));
-        lblCustomerAddress.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        lblCustomerAddress.setForeground(new java.awt.Color(0, 0, 0));
-        lblCustomerAddress.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCustomerAddress.setText("Address:");
-
-        txtCustomerAddress.setBackground(new java.awt.Color(255, 255, 255));
-        txtCustomerAddress.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtCustomerAddress.setForeground(new java.awt.Color(0, 0, 0));
-        txtCustomerAddress.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCustomerAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtCustomerAddress.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtCustomerAddress.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtCustomerAddress.setSelectionColor(new java.awt.Color(102, 102, 255));
 
         lblCustomerID.setBackground(new java.awt.Color(255, 255, 255));
         lblCustomerID.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
@@ -1171,21 +1109,6 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         txtCustomerID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtCustomerID.setEnabled(false);
         txtCustomerID.setSelectionColor(new java.awt.Color(102, 102, 255));
-
-        lblCustomerTelephone.setBackground(new java.awt.Color(255, 255, 255));
-        lblCustomerTelephone.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        lblCustomerTelephone.setForeground(new java.awt.Color(0, 0, 0));
-        lblCustomerTelephone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCustomerTelephone.setText("Telephone:");
-
-        txtCustomerTelephone.setBackground(new java.awt.Color(255, 255, 255));
-        txtCustomerTelephone.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtCustomerTelephone.setForeground(new java.awt.Color(0, 0, 0));
-        txtCustomerTelephone.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCustomerTelephone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtCustomerTelephone.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtCustomerTelephone.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtCustomerTelephone.setSelectionColor(new java.awt.Color(102, 102, 255));
 
         btnCustomerRegister.setBackground(new java.awt.Color(255, 255, 255));
         btnCustomerRegister.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
@@ -1229,45 +1152,25 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                     .addGroup(jPanel22Layout.createSequentialGroup()
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblCustomerID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblCustomerEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblCustomerName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel22Layout.createSequentialGroup()
-                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtCustomerName, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(txtCustomerID))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblCustomerAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                                    .addComponent(lblCustomerTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtCustomerAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-                                    .addComponent(txtCustomerTelephone)))
-                            .addComponent(txtCustomerMail))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                            .addComponent(txtCustomerName, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(txtCustomerID))))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel22Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCustomerAddress)
-                    .addComponent(txtCustomerAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCustomerID)
                     .addComponent(txtCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCustomerName)
-                    .addComponent(txtCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCustomerTelephone)
-                    .addComponent(txtCustomerTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCustomerEmail)
-                    .addComponent(txtCustomerMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCustomerRegister)
                     .addComponent(btnCustomerModify)
@@ -1331,7 +1234,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                         .addComponent(jLabel36)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtSearchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2464,6 +2367,10 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtPurchaseProductQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPurchaseProductQuantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPurchaseProductQuantityActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable ConsumeTable;
     public javax.swing.JPanel JPanelCategories;
@@ -2494,19 +2401,16 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
     public javax.swing.JButton btnEmployeeRegister;
     public javax.swing.JButton btnEmployeeUpdate;
     public javax.swing.JButton btnModifyPasswordActual;
-    public javax.swing.JButton btnPurchaseAdd;
     public javax.swing.JButton btnPurchaseBuy;
     public javax.swing.JButton btnPurchaseCancel;
     public javax.swing.JButton btnPurchaseDelete;
+    public javax.swing.JButton btnRegistrarCampo;
     public javax.swing.JButton btnSupplierCancel;
     public javax.swing.JButton btnSupplierDelete;
     public javax.swing.JButton btnSupplierModify;
     public javax.swing.JButton btnSupplierRegister;
     public javax.swing.JTable categoryTable;
     public javax.swing.JComboBox<String> cmbEmployeeRol;
-    public javax.swing.JComboBox<String> cmbPurchasesCustomer;
-    public javax.swing.JComboBox<String> cmbPurchasesProduct;
-    public javax.swing.JComboBox<String> cmbPurchasesSupplier;
     public javax.swing.JTable customersTable;
     public javax.swing.JTable employeesTable;
     private javax.swing.JLabel jLabel1;
@@ -2519,8 +2423,6 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel28;
@@ -2588,11 +2490,8 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
     public javax.swing.JLabel lblCategories;
     public javax.swing.JLabel lblConfigurations;
     public javax.swing.JLabel lblConsumeE;
-    private javax.swing.JLabel lblCustomerAddress;
-    private javax.swing.JLabel lblCustomerEmail;
     private javax.swing.JLabel lblCustomerID;
     private javax.swing.JLabel lblCustomerName;
-    private javax.swing.JLabel lblCustomerTelephone;
     public javax.swing.JLabel lblCustomers;
     public javax.swing.JLabel lblEmployeeNameUser;
     public javax.swing.JLabel lblEmployeeRol;
@@ -2612,11 +2511,8 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
     public javax.swing.JTextField txtConsumeResult;
     public javax.swing.JTextField txtConsumeTariff;
     public javax.swing.JTextField txtConsumeTime;
-    public javax.swing.JTextField txtCustomerAddress;
     public javax.swing.JTextField txtCustomerID;
-    public javax.swing.JTextField txtCustomerMail;
     public javax.swing.JTextField txtCustomerName;
-    public javax.swing.JTextField txtCustomerTelephone;
     public javax.swing.JTextField txtEmployeeAddress;
     public javax.swing.JTextField txtEmployeeAddressConfigurations;
     public javax.swing.JTextField txtEmployeeEmail;
@@ -2631,6 +2527,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
     public javax.swing.JTextField txtEmployeeUser;
     public javax.swing.JTextField txtPurchaseID;
     public javax.swing.JTextField txtPurchasePrice;
+    public javax.swing.JTextField txtPurchasePrice1;
     public javax.swing.JTextField txtPurchaseProductID;
     public javax.swing.JTextField txtPurchaseProductQuantity;
     public javax.swing.JTextField txtPurchaseReport;

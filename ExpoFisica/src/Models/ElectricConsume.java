@@ -3,10 +3,10 @@ package Models;
 public class ElectricConsume {
 
     private Integer ID;
-    private String electricAppliance;
-    private Double electricPower;
-    private Double deviceTime;
-    private Double electricityTariff;
+    private String electricAppliance; //Aparato que consume electricidad
+    private Double electricPower; //Potencia 
+    private Double deviceTime; //Tiempo de uso
+    private Double electricityTariff; //Tarifa electrica
     private Double result;
     private String user;
 
