@@ -33,12 +33,12 @@ public class AdministrationConfigurations implements MouseListener, ActionListen
     private void addMouseListeners() {
         // Attach mouse listeners to the navigation labels
         administration.lblConsumeE.addMouseListener(this);
-        administration.lblPurchases.addMouseListener(this);
-        administration.lblCustomers.addMouseListener(this);
+        administration.lblCampoE.addMouseListener(this);
+        administration.lblLeyCoulomb.addMouseListener(this);
         administration.lblEmployees.addMouseListener(this);
-        administration.lblSuppliers.addMouseListener(this);
-        administration.lblCategories.addMouseListener(this);
-        administration.lblReports.addMouseListener(this);
+        administration.lblTorque.addMouseListener(this);
+        administration.lblPotencialE.addMouseListener(this);
+
         administration.lblConfigurations.addMouseListener(this);
         administration.lblInstructions.addMouseListener(this);
     }
@@ -88,18 +88,16 @@ public class AdministrationConfigurations implements MouseListener, ActionListen
         // Set the background color for the corresponding panel based on the source
         if (e.getSource() == administration.lblConsumeE) {
             administration.JPanelConsumeE.setBackground(color);
-        } else if (e.getSource() == administration.lblPurchases) {
+        } else if (e.getSource() == administration.lblCampoE) {
             administration.JPanelPurchases.setBackground(color);
-        } else if (e.getSource() == administration.lblCustomers) {
+        } else if (e.getSource() == administration.lblLeyCoulomb) {
             administration.JPanelCustomers.setBackground(color);
         } else if (e.getSource() == administration.lblEmployees) {
             administration.JPanelEmployees.setBackground(color);
-        } else if (e.getSource() == administration.lblSuppliers) {
+        } else if (e.getSource() == administration.lblTorque) {
             administration.JPanelSuppliers.setBackground(color);
-        } else if (e.getSource() == administration.lblCategories) {
+        } else if (e.getSource() == administration.lblPotencialE) {
             administration.JPanelCategories.setBackground(color);
-        } else if (e.getSource() == administration.lblReports) {
-            administration.JPanelReports.setBackground(color);
         } else if (e.getSource() == administration.lblConfigurations) {
             administration.JPanelConfigurations.setBackground(color);
         } else if (e.getSource() == administration.lblInstructions) {
@@ -140,7 +138,7 @@ public class AdministrationConfigurations implements MouseListener, ActionListen
             JOptionPane.showMessageDialog(null, "Please fill in all fields.");
         } else if (administration.txtEmployeePasswordConfiguration.getText()
                 .equals(administration.txtEmployeePasswordConfirm.getText()) && employeeActions
-                .modifyPassword(Integer.parseInt(administration.txtEmployeeIDConfigurations.getText()),
+                .modifyPassword(Integer.valueOf(administration.txtEmployeeIDConfigurations.getText()),
                         administration.txtEmployeePasswordConfirm.getText())) {
             cleanFields(); // Clear password fields after successful change
             JOptionPane.showMessageDialog(null, "Password successfully modified."); // Success message

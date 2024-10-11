@@ -46,7 +46,6 @@ public class LoginController implements ActionListener {
         if (employeeActions.getCurrentEmployee().getEmployeeRol().equals("Auxiliary")) {
             // Disable certain features for users with the Auxiliary role
             administration.lblEmployees.setEnabled(false);
-            administration.lblReports.setEnabled(false);
             administration.jTabbedPanePanels.setEnabledAt(3, false);
             administration.jTabbedPanePanels.setEnabledAt(6, false);
         }

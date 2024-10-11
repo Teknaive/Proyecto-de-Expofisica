@@ -14,134 +14,197 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Controlador para gestionar la vista de campos eléctricos. Implementa
+ * ActionListener, MouseListener y KeyListener para manejar eventos.
+ */
 public class FieldEController implements ActionListener, MouseListener, KeyListener {
 
     private final Administration administration;
     private final FieldEActions fieldEActions;
-    private final UsersActions employeeActions;
     private DefaultTableModel model;
 
+    /**
+     * Constructor para inicializar el controlador de campos eléctricos.
+     *
+     * @param administration La vista de administración.
+     * @param fieldEActions Las acciones relacionadas con FieldE.
+     * @param employeeActions Las acciones relacionadas con empleados (no se
+     * utiliza aquí, pero podría usarse en el futuro).
+     */
     public FieldEController(Administration administration, FieldEActions fieldEActions, UsersActions employeeActions) {
         this.administration = administration;
         this.fieldEActions = fieldEActions;
-        this.employeeActions = employeeActions;
-        // Add action listeners to buttons
+        // Registrar listeners
         addActionListeners();
-        // Add mouse listeners to components
         addMouseListeners();
-        // Add key listeners to search field
         addKeyListeners();
     }
 
     private void addActionListeners() {
-        // Add action listeners to product-related buttons
         administration.btnRegistrarCampo.addActionListener(this);
-        administration.btnPurchaseBuy.addActionListener(this);
-        administration.btnPurchaseDelete.addActionListener(this);
-        administration.btnPurchaseCancel.addActionListener(this);
+        administration.btnModificarCampoE.addActionListener(this);
+        administration.btnEliminarCampoE.addActionListener(this);
+        administration.btnCancelarCampo.addActionListener(this);
     }
 
     private void addMouseListeners() {
-        // Add mouse listeners to product-related components
-        administration.lblPurchases.addMouseListener(this);
-        administration.purchaseTable.addMouseListener(this);
+        administration.lblCampoE.addMouseListener(this);
+        administration.CamposTable.addMouseListener(this);
     }
 
     private void addKeyListeners() {
-        // Add key listener to the search product field
-
-        administration.txtPurchaseTotal.addKeyListener(this);
+        administration.txtFieldAngulo.addKeyListener(this);
+        administration.txtFieldEDistance.addKeyListener(this);
+        administration.txtFieldECharge.addKeyListener(this);
     }
 
-    private boolean areFieldsClean() {
-        // Check if any product input field is blank
-        return administration.txtPurchaseProductQuantity.getText().isBlank()
-                || administration.txtPurchasePrice.getText().isBlank()
-                || administration.txtPurchasePrice1.getText().isBlank()
-                || administration.txtPurchaseID.getText().isBlank();
+    /**
+     * Verifica si los campos están vacíos.
+     *
+     * @return true si alguno de los campos está vacío.
+     */
+    private boolean areFieldsEmpty() {
+        return administration.txtFieldECharge.getText().isBlank()
+                || administration.txtFieldEDistance.getText().isBlank()
+                || administration.txtFieldAngulo.getText().isBlank()
+                || administration.txtFieldEDirection.getText().isBlank();
     }
 
+    /**
+     * Limpia la tabla de campos eléctricos y los combobox relacionados.
+     */
     private void cleanTable() {
-        // Clear the product table and combo box
-        model = (DefaultTableModel) administration.purchaseTable.getModel();
+        model = (DefaultTableModel) administration.CamposTable.getModel();
         while (model.getRowCount() > 0) {
-            model.removeRow(0); // Remove all rows from the table
+            model.removeRow(0);
         }
+        administration.cmbCampoE.removeAllItems();
+        administration.cmbCampoE2.removeAllItems();
+        administration.cmbCampoE3.removeAllItems();
     }
 
+    /**
+     * Limpia los campos de texto de la interfaz.
+     */
     private void cleanFields() {
-        // Clear product input fields
-        administration.txtPurchaseProductID.setText("");
-        administration.txtPurchaseProductQuantity.setText("");
-        administration.txtPurchaseID.setText("");
-        administration.txtPurchasePrice.setText("");
-        administration.txtPurchasePrice1.setText("");
-        administration.txtPurchaseTotal.setText("");
+        administration.txtFieldEID.setText("");
+        administration.txtFieldECharge.setText("");
+        administration.txtFieldEDirection.setText("");
+        administration.txtFieldEDistance.setText("");
+        administration.txtFieldAngulo.setText("");
+        administration.txtResultadoCampoE.setText("");
     }
 
+    /**
+     * Maneja el registro de un nuevo campo eléctrico, validando los datos de
+     * entrada.
+     */
     private void registerField() {
-        if (!fieldEActions.isDoubleString(administration.txtPurchaseProductQuantity.getText().trim())) {
-            JOptionPane.showMessageDialog(null, "Recuerda que en el campo correspondiente a la carga\nse deben ingresar datos numéricos.");
-        } else if (!fieldEActions.isDoubleString(administration.txtPurchasePrice.getText().trim())) {
-            JOptionPane.showMessageDialog(null, "Recuerda que en el campo correspondiente a la distancia\nse deben ingresar datos numéricos.");
-        } else if (!fieldEActions.isDoubleString(administration.txtPurchasePrice1.getText().trim())) {
-            JOptionPane.showMessageDialog(null, "Recuerda que en el campo correspondiente a la tarifa\nse deben ingresar datos numéricos.");
-        } else {
-            fieldEActions.addFieldE(Double.parseDouble(administration.txtPurchaseProductQuantity.getText().trim()),
-                    Double.parseDouble(administration.txtPurchasePrice.getText().trim()), Double.parseDouble(administration.txtPurchasePrice1.getText().trim()), administration.txtPurchaseID.getText().trim());
+        if (validateFieldInputs()) {
+            fieldEActions.addFieldE(
+                    Double.parseDouble(administration.txtFieldECharge.getText().trim()),
+                    Double.parseDouble(administration.txtFieldEDistance.getText().trim()),
+                    Double.parseDouble(administration.txtFieldAngulo.getText().trim()),
+                    administration.txtFieldEDirection.getText().trim(),
+                    Double.parseDouble(administration.txtResultadoCampoE.getText().trim())
+            );
             refreshConsumeData();
-            JOptionPane.showMessageDialog(null, "Consumo eléctrico registrado con éxito.");
+            JOptionPane.showMessageDialog(null, "Campo eléctrico registrado con éxito.");
         }
     }
 
-    /*private void modifyElectricConsume() {
-        if (!electricConsumeActions.isDoubleString(administration.txtConsumePower.getText().trim())) {
-            JOptionPane.showMessageDialog(null, "Recuerda que en el campo correspondiente a la potencia\nse deben ingresar datos numéricos.");
-        } else if (!electricConsumeActions.isDoubleString(administration.txtConsumeTime.getText().trim())) {
-            JOptionPane.showMessageDialog(null, "Recuerda que en el campo correspondiente al tiempo\nse deben ingresar datos numéricos.");
-        } else if (!electricConsumeActions.isDoubleString(administration.txtConsumeTariff.getText().trim())) {
-            JOptionPane.showMessageDialog(null, "Recuerda que en el campo correspondiente a la tarifa\nse deben ingresar datos numéricos.");
-        } else if (electricConsumeActions.modifyElectricConsume(Integer.valueOf(administration.txtConsumeID.getText()),
-                electricConsumeActions.nameAdditionalValidation(administration.txtConsumeDevice.getText().trim()),
-                Double.valueOf(administration.txtConsumePower.getText().trim()),
-                Double.valueOf(administration.txtConsumeTime.getText().trim()),
-                Double.valueOf(administration.txtConsumeTariff.getText().trim()),
-                employeeActions.getCurrentEmployee().getEmployeeUser())) {
+    /**
+     * Valida los datos de entrada de los campos eléctricos.
+     *
+     * @return true si todos los campos son válidos.
+     */
+    private boolean validateFieldInputs() {
+        if (!fieldEActions.isDoubleString(administration.txtFieldECharge.getText().trim())) {
+            JOptionPane.showMessageDialog(null, "El campo de carga debe contener un número.");
+            return false;
+        }
+        if (!fieldEActions.isDoubleString(administration.txtFieldEDistance.getText().trim())) {
+            JOptionPane.showMessageDialog(null, "El campo de distancia debe contener un número.");
+            return false;
+        }
+        if (!fieldEActions.isDoubleString(administration.txtFieldAngulo.getText().trim())) {
+            JOptionPane.showMessageDialog(null, "El campo de ángulo debe contener un número.");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateFieldInputsTwo() {
+        if (!fieldEActions.isDoubleString(administration.txtFieldECharge.getText().trim())) {
+
+            return false;
+        }
+        if (!fieldEActions.isDoubleString(administration.txtFieldEDistance.getText().trim())) {
+
+            return false;
+        }
+        return fieldEActions.isDoubleString(administration.txtFieldAngulo.getText().trim());
+    }
+
+    /**
+     * Modifica un campo eléctrico existente.
+     */
+    private void modifyField() {
+        if (validateFieldInputs()) {
+            fieldEActions.modifyFieldE(Integer.parseInt(administration.txtFieldEID.getText().trim()),
+                    Double.parseDouble(administration.txtFieldECharge.getText().trim()),
+                    Double.parseDouble(administration.txtFieldEDistance.getText().trim()),
+                    Double.parseDouble(administration.txtFieldAngulo.getText().trim()),
+                    administration.txtFieldEDirection.getText().trim(),
+                    Double.parseDouble(administration.txtResultadoCampoE.getText().trim())
+            );
             refreshConsumeData();
-            administration.btnConsumeRegister.setEnabled(true);
-            JOptionPane.showMessageDialog(null, "Consumo modificado con éxito.");
+            administration.btnRegistrarCampo.setEnabled(true);
+            JOptionPane.showMessageDialog(null, "Campo eléctrico modificado con éxito.");
         }
     }
-    
-    private void deleteElectricConsume() {
-        if (electricConsumeActions.deleteElectricConsume(Integer.valueOf(administration.txtConsumeID.getText()))) {
+
+    /**
+     * Elimina un campo eléctrico.
+     */
+    private void deleteField() {
+        if (fieldEActions.deleteFieldE(Integer.parseInt(administration.txtFieldEID.getText().trim()))) {
             refreshConsumeData();
-            administration.txtPurchaseProductID.setText("");
-            administration.btnConsumeRegister.setEnabled(true);
-            JOptionPane.showMessageDialog(null, "Consumo eliminado con éxito.");
+            cleanFields();
+            administration.btnRegistrarCampo.setEnabled(true);
+            JOptionPane.showMessageDialog(null, "Campo eléctrico eliminado con éxito.");
         }
-    }*/
+    }
+
+    /**
+     * Refresca la tabla y los campos de la interfaz con los últimos datos de
+     * los campos eléctricos.
+     */
     private void refreshConsumeData() {
         cleanTable();
         cleanFields();
         loadFieldsE();
     }
 
+    /**
+     * Carga los campos eléctricos en la tabla y los combobox.
+     */
     public void loadFieldsE() {
         Map<Integer, FieldE> fieldsE = fieldEActions.listFieldsE();
-        model = (DefaultTableModel) administration.purchaseTable.getModel();
+        model = (DefaultTableModel) administration.CamposTable.getModel();
         Object[] row = new Object[6];
-        for (Map.Entry<Integer, FieldE> entry : fieldsE.entrySet()) {
-            FieldE value = entry.getValue();
-
-            row[0] = value.getID();
-            row[1] = value.getCargaQ();
-            row[2] = value.getDireccion();
-            row[3] = value.getDistanciaR();
-            row[4] = value.getAnguloA();
-            row[5] = value.getResult();
+        for (FieldE field : fieldsE.values()) {
+            row[0] = field.getId();
+            row[1] = field.getCargaQ();
+            row[2] = field.getDireccion();
+            row[3] = field.getDistanciaR();
+            row[4] = field.getAnguloA();
+            row[5] = field.getResult();
             model.addRow(row);
-
+            administration.cmbCampoE.addItem(String.valueOf(row[5]));
+            administration.cmbCampoE2.addItem(String.valueOf(row[5]));
+            administration.cmbCampoE3.addItem(String.valueOf(row[5]));
         }
     }
 
@@ -149,115 +212,91 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source == administration.btnRegistrarCampo) {
-            if (areFieldsClean()) {
-                JOptionPane.showMessageDialog(null, "Please fill in all fields."); // Show error if fields are blank
+            if (areFieldsEmpty()) {
+                JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.");
             } else {
                 registerField();
             }
-        }
-        /*else if (source == administration.btnConsumeModify) {
-            // Handle modify product button
-            int row = administration.ConsumeTable.getSelectedRow();
-            if (row == -1) {
-                JOptionPane.showMessageDialog(null, "Please select the product's row."); // Show error if no row is selected
-            } else if (areFieldsClean()) {
-                JOptionPane.showMessageDialog(null, "Please fill in all fields."); // Show error if fields are blank
+        } else if (source == administration.btnModificarCampoE) {
+            if (administration.CamposTable.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione un campo de la tabla.");
+            } else if (areFieldsEmpty()) {
+                JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.");
             } else {
-                modifyElectricConsume();
+                modifyField();
             }
-        } else if (source == administration.btnConsumeDelete) {
-            // Handle delete product button
-            int row = administration.ConsumeTable.getSelectedRow();
-            if (row == -1) {
-                JOptionPane.showMessageDialog(null, "Please select the product's row."); // Show error if no row is selected
+        } else if (source == administration.btnEliminarCampoE) {
+            if (administration.CamposTable.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione un campo de la tabla.");
             } else {
-                deleteElectricConsume();
+                deleteField();
             }
-        } */else if (source == administration.btnPurchaseCancel) {
-            // Handle cancel button
+        } else if (source == administration.btnCancelarCampo) {
             refreshConsumeData();
-            administration.btnRegistrarCampo.setEnabled(true); // Enable the register button
+            administration.btnRegistrarCampo.setEnabled(true);
         }
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getSource() == administration.purchaseTable) {
-            int row = administration.purchaseTable.rowAtPoint(e.getPoint()); // Get the clicked row
-            administration.txtPurchaseProductID.setText(administration.purchaseTable.getValueAt(row, 0).toString());
-            administration.txtPurchaseProductQuantity.setText(administration.purchaseTable.getValueAt(row, 1).toString());
-            administration.txtPurchaseID.setText(administration.purchaseTable.getValueAt(row, 2).toString());
-            administration.txtPurchasePrice.setText(administration.purchaseTable.getValueAt(row, 3).toString());
-            administration.txtPurchasePrice1.setText(administration.purchaseTable.getValueAt(row, 4).toString());
-            administration.txtPurchaseTotal.setText(administration.purchaseTable.getValueAt(row, 5).toString());
-            administration.btnRegistrarCampo.setEnabled(false); // Disable the register button
-        } else if (e.getSource() == administration.lblPurchases) {
-            // Switch to the product management tab
+        if (e.getSource() == administration.CamposTable) {
+            int row = administration.CamposTable.rowAtPoint(e.getPoint());
+            administration.txtFieldEID.setText(administration.CamposTable.getValueAt(row, 0).toString());
+            administration.txtFieldECharge.setText(administration.CamposTable.getValueAt(row, 1).toString());
+            administration.txtFieldEDirection.setText(administration.CamposTable.getValueAt(row, 2).toString());
+            administration.txtFieldEDistance.setText(administration.CamposTable.getValueAt(row, 3).toString());
+            administration.txtFieldAngulo.setText(administration.CamposTable.getValueAt(row, 4).toString());
+            administration.txtResultadoCampoE.setText(administration.CamposTable.getValueAt(row, 5).toString());
+            administration.btnRegistrarCampo.setEnabled(false);
+        } else if (e.getSource() == administration.lblCampoE) {
             administration.jTabbedPanePanels.setSelectedIndex(1);
         }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getSource() == administration.txtPurchaseTotal) {
-            // Calculate the total price based on the product quantity
-            if (!administration.txtPurchaseProductQuantity.getText().isBlank()
-                    && fieldEActions.isDoubleString(administration.txtPurchaseProductQuantity.getText().trim())
-                    && !administration.txtPurchasePrice.getText().isBlank()
-                    && fieldEActions.isDoubleString(administration.txtPurchasePrice.getText().trim())
-                    && !administration.txtPurchasePrice1.getText().isBlank()
-                    && fieldEActions.isDoubleString(administration.txtPurchasePrice1.getText().trim())) {
-                double k = 8.99e9; // Constante de Coulomb en N·m²/C²
-                double result;
+        if (e.getSource() == administration.txtFieldECharge
+                || e.getSource() == administration.txtFieldEDistance
+                || e.getSource() == administration.txtFieldAngulo) {
+            if (!areFieldsEmpty() && validateFieldInputsTwo()) {
+                double k = 8.99e9; // Constante de Coulomb
+                double cargaQ = Double.parseDouble(administration.txtFieldECharge.getText().trim());
+                double distanciaR = Double.parseDouble(administration.txtFieldEDistance.getText().trim());
+                double anguloA = Double.parseDouble(administration.txtFieldAngulo.getText().trim());
 
-                double cargaQ = Double.parseDouble(administration.txtPurchaseProductQuantity.getText().trim());
-                double distanciaR = Double.parseDouble(administration.txtPurchasePrice.getText().trim());
-                double anguloA = Double.parseDouble(administration.txtPurchasePrice1.getText().trim());
+                // Convertir ángulo a radianes y calcular componentes del campo eléctrico
+                double anguloRadianes = Math.toRadians(anguloA);
+                double magnitud = (k * Math.abs(cargaQ)) / (distanciaR * distanciaR);
+                double Ex = magnitud * Math.cos(anguloRadianes);
+                double Ey = magnitud * Math.sin(anguloRadianes);
+                double campoElectricoResultante = Math.sqrt(Ex * Ex + Ey * Ey);
 
-                // Calcular la magnitud del campo eléctrico
-                double magnitudE = k * Math.abs(cargaQ) / (distanciaR * distanciaR);
-
-                // Si se proporciona un ángulo, calculamos las componentes del campo
-                if (anguloA != 0) {
-                    double Ex = magnitudE * Math.cos(Math.toRadians(anguloA));
-                    double Ey = magnitudE * Math.sin(Math.toRadians(anguloA));
-                    result = Math.sqrt(Ex * Ex + Ey * Ey);
-                } else {
-                    result = magnitudE;
-                }
-                administration.txtConsumeResult.setText(String.valueOf(result));
+                administration.txtResultadoCampoE.setText(String.valueOf(campoElectricoResultante));
             }
         }
     }
-
 }

@@ -3,6 +3,9 @@ package Views;
 import Controllers.AdministrationConfigurations;
 import Controllers.ElectricConsumeController;
 import Controllers.FieldEController;
+import Controllers.ForceEController;
+import Controllers.PotencialEController;
+import Controllers.TorqueController;
 
 import Controllers.UserController;
 
@@ -10,6 +13,9 @@ import Models.UsersActions;
 import Interfaces.GraphicalConfiguration;
 import Models.ElectricConsumeActions;
 import Models.FieldEActions;
+import Models.ForceActions;
+import Models.PotencialEActions;
+import Models.TorqueActions;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class Administration extends javax.swing.JFrame implements GraphicalConfiguration {
@@ -17,6 +23,9 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
     private final UsersActions employeeActions = UsersActions.getInstance(); // Initialize UsersActions instance
     private final ElectricConsumeActions electricConsumeActions = ElectricConsumeActions.getInstance();
     private final FieldEActions fieldEActions = FieldEActions.getInstance();
+    private final ForceActions forceActions = ForceActions.getInstance();
+    private final TorqueActions torqueActions = TorqueActions.getInstance();
+    private final PotencialEActions potencialEActions = PotencialEActions.getInstance();
 
     /**
      * Creates new form Administración
@@ -26,7 +35,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
     public Administration() throws UnsupportedLookAndFeelException {
         initComponents(); // Initialize the components of the JFrame
         // Apply personal settings to the frame, including title, size, and icon image
-        framePersonalSettings(this, "Pharmacy Administrator", 1215, 818, "Images/Designer (3).png");
+        framePersonalSettings(this, "Calculadora de electricidad", 1215, 818, "Images/Designer (3).png");
 
         // Initialize administration configurations with the current frame and employee actions
         AdministrationConfigurations administrationConfigurations = new AdministrationConfigurations(this, employeeActions);
@@ -40,6 +49,16 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
 
         FieldEController fieldEController = new FieldEController(this, fieldEActions, employeeActions);
         fieldEController.loadFieldsE();
+
+        ForceEController forceEController = new ForceEController(this, forceActions);
+        forceEController.loadForcesE();
+
+        TorqueController torqueController = new TorqueController(this, torqueActions);
+        torqueController.loadTorques();
+
+        PotencialEController potencialEController = new PotencialEController(this, potencialEActions);
+        potencialEController.loadPotencialesE();
+
         this.repaint(); // Refresh the frame to reflect any changes
     }
 
@@ -58,17 +77,15 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         JPanelConsumeE = new javax.swing.JPanel();
         lblConsumeE = new javax.swing.JLabel();
         JPanelPurchases = new javax.swing.JPanel();
-        lblPurchases = new javax.swing.JLabel();
+        lblCampoE = new javax.swing.JLabel();
         JPanelCustomers = new javax.swing.JPanel();
-        lblCustomers = new javax.swing.JLabel();
+        lblLeyCoulomb = new javax.swing.JLabel();
         JPanelEmployees = new javax.swing.JPanel();
         lblEmployees = new javax.swing.JLabel();
         JPanelSuppliers = new javax.swing.JPanel();
-        lblSuppliers = new javax.swing.JLabel();
+        lblTorque = new javax.swing.JLabel();
         JPanelCategories = new javax.swing.JPanel();
-        lblCategories = new javax.swing.JLabel();
-        JPanelReports = new javax.swing.JPanel();
-        lblReports = new javax.swing.JLabel();
+        lblPotencialE = new javax.swing.JLabel();
         JPanelConfigurations = new javax.swing.JPanel();
         lblConfigurations = new javax.swing.JLabel();
         JPanelInstructions = new javax.swing.JPanel();
@@ -105,36 +122,38 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jPanel21 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        txtPurchaseProductID = new javax.swing.JTextField();
-        txtPurchaseProductQuantity = new javax.swing.JTextField();
+        txtFieldEID = new javax.swing.JTextField();
+        txtFieldECharge = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        txtPurchasePrice = new javax.swing.JTextField();
+        txtFieldEDistance = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        txtPurchaseTotal = new javax.swing.JTextField();
+        txtResultadoCampoE = new javax.swing.JTextField();
         btnRegistrarCampo = new javax.swing.JButton();
-        btnPurchaseBuy = new javax.swing.JButton();
-        btnPurchaseDelete = new javax.swing.JButton();
-        btnPurchaseCancel = new javax.swing.JButton();
+        btnModificarCampoE = new javax.swing.JButton();
+        btnEliminarCampoE = new javax.swing.JButton();
+        btnCancelarCampo = new javax.swing.JButton();
         jLabel29 = new javax.swing.JLabel();
-        txtPurchaseID = new javax.swing.JTextField();
-        txtPurchasePrice1 = new javax.swing.JTextField();
+        txtFieldEDirection = new javax.swing.JTextField();
+        txtFieldAngulo = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        purchaseTable = new javax.swing.JTable();
+        CamposTable = new javax.swing.JTable();
         jPanel14 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
         lblCustomerName = new javax.swing.JLabel();
-        txtCustomerName = new javax.swing.JTextField();
+        txtCargaLeyCoulomb = new javax.swing.JTextField();
         lblCustomerID = new javax.swing.JLabel();
-        txtCustomerID = new javax.swing.JTextField();
-        btnCustomerRegister = new javax.swing.JButton();
-        btnCustomerModify = new javax.swing.JButton();
-        btnCustomerDelete = new javax.swing.JButton();
-        btnCustomerCancel = new javax.swing.JButton();
-        jLabel36 = new javax.swing.JLabel();
-        txtSearchCustomer = new javax.swing.JTextField();
+        txtFuerzaID = new javax.swing.JTextField();
+        btnRegistrarFuerza = new javax.swing.JButton();
+        btnModificarFuerza = new javax.swing.JButton();
+        btnEliminarFuerza = new javax.swing.JButton();
+        btnCancelarFuerza = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        cmbCampoE = new javax.swing.JComboBox<>();
+        lblCustomerName1 = new javax.swing.JLabel();
+        txtResultadoLeyCoulomb = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        customersTable = new javax.swing.JTable();
+        fuerzasTable = new javax.swing.JTable();
         jPanel15 = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
@@ -162,45 +181,39 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jPanel16 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jLabel44 = new javax.swing.JLabel();
-        txtSupplierName = new javax.swing.JTextField();
+        txtTorqueID = new javax.swing.JTextField();
         jLabel45 = new javax.swing.JLabel();
-        txtSupplierAddress = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
-        txtSupplierTelephone = new javax.swing.JTextField();
-        jLabel47 = new javax.swing.JLabel();
+        txtTorqueAngulo = new javax.swing.JTextField();
         jLabel48 = new javax.swing.JLabel();
-        txtSupplierID = new javax.swing.JTextField();
+        txtTorqueDistancia = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
-        txtSupplierMail = new javax.swing.JTextField();
+        txtTorqueCarga = new javax.swing.JTextField();
         jLabel50 = new javax.swing.JLabel();
-        txtSupplierCity = new javax.swing.JTextField();
-        btnSupplierRegister = new javax.swing.JButton();
-        btnSupplierModify = new javax.swing.JButton();
-        btnSupplierDelete = new javax.swing.JButton();
-        btnSupplierCancel = new javax.swing.JButton();
-        txtSupplierDescription = new javax.swing.JTextField();
+        txtTorqueResultado = new javax.swing.JTextField();
+        btnRegistrarTorque = new javax.swing.JButton();
+        btnModificarTorque = new javax.swing.JButton();
+        btnEliminarTorque = new javax.swing.JButton();
+        btnCancelarTorque = new javax.swing.JButton();
+        cmbCampoE2 = new javax.swing.JComboBox<>();
         jScrollPane5 = new javax.swing.JScrollPane();
-        supplierTable = new javax.swing.JTable();
-        jLabel51 = new javax.swing.JLabel();
-        txtSearchSupplier = new javax.swing.JTextField();
+        torqueTable = new javax.swing.JTable();
         jPanel17 = new javax.swing.JPanel();
         jPanel25 = new javax.swing.JPanel();
         jLabel52 = new javax.swing.JLabel();
-        txtCategoryName = new javax.swing.JTextField();
-        jLabel53 = new javax.swing.JLabel();
-        txtCategoryID = new javax.swing.JTextField();
-        btnCategoryRegister = new javax.swing.JButton();
-        btnCategoryModify = new javax.swing.JButton();
-        btnCategoryDelete = new javax.swing.JButton();
-        btnCategoryCancel = new javax.swing.JButton();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        categoryTable = new javax.swing.JTable();
-        jPanel18 = new javax.swing.JPanel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        reportsTable = new javax.swing.JTable();
+        txtPotencialEID = new javax.swing.JTextField();
+        btnRegistrarPotencialE = new javax.swing.JButton();
+        btnModificarPotencialE = new javax.swing.JButton();
+        btnEliminarPotencialE = new javax.swing.JButton();
+        btnCancelarPotencialE = new javax.swing.JButton();
         jLabel54 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtPurchaseReport = new javax.swing.JTextField();
+        cmbCampoE3 = new javax.swing.JComboBox<>();
+        jLabel53 = new javax.swing.JLabel();
+        txtPotencialEDistancia = new javax.swing.JTextField();
+        jLabel61 = new javax.swing.JLabel();
+        txtResultadoPotencialE = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        potencialETable = new javax.swing.JTable();
         jPanel19 = new javax.swing.JPanel();
         jPanel26 = new javax.swing.JPanel();
         jLabel55 = new javax.swing.JLabel();
@@ -263,45 +276,45 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         JPanelPurchases.setBackground(new java.awt.Color(102, 102, 255));
         JPanelPurchases.setForeground(new java.awt.Color(255, 255, 255));
 
-        lblPurchases.setBackground(new java.awt.Color(255, 255, 255));
-        lblPurchases.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
-        lblPurchases.setForeground(new java.awt.Color(255, 255, 255));
-        lblPurchases.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPurchases.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ImagePurchases (1).png"))); // NOI18N
-        lblPurchases.setText("Campos E.");
-        lblPurchases.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblCampoE.setBackground(new java.awt.Color(255, 255, 255));
+        lblCampoE.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
+        lblCampoE.setForeground(new java.awt.Color(255, 255, 255));
+        lblCampoE.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCampoE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ImagePurchases (1).png"))); // NOI18N
+        lblCampoE.setText("Campos E.");
+        lblCampoE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout JPanelPurchasesLayout = new javax.swing.GroupLayout(JPanelPurchases);
         JPanelPurchases.setLayout(JPanelPurchasesLayout);
         JPanelPurchasesLayout.setHorizontalGroup(
             JPanelPurchasesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblPurchases, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblCampoE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JPanelPurchasesLayout.setVerticalGroup(
             JPanelPurchasesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblPurchases, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblCampoE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         JPanelCustomers.setBackground(new java.awt.Color(102, 102, 255));
         JPanelCustomers.setForeground(new java.awt.Color(255, 255, 255));
 
-        lblCustomers.setBackground(new java.awt.Color(255, 255, 255));
-        lblCustomers.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
-        lblCustomers.setForeground(new java.awt.Color(255, 255, 255));
-        lblCustomers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCustomers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ImageClients (1).png"))); // NOI18N
-        lblCustomers.setText("Ley de Coulomb");
-        lblCustomers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblLeyCoulomb.setBackground(new java.awt.Color(255, 255, 255));
+        lblLeyCoulomb.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
+        lblLeyCoulomb.setForeground(new java.awt.Color(255, 255, 255));
+        lblLeyCoulomb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLeyCoulomb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ImageClients (1).png"))); // NOI18N
+        lblLeyCoulomb.setText("Ley de Coulomb");
+        lblLeyCoulomb.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout JPanelCustomersLayout = new javax.swing.GroupLayout(JPanelCustomers);
         JPanelCustomers.setLayout(JPanelCustomersLayout);
         JPanelCustomersLayout.setHorizontalGroup(
             JPanelCustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblCustomers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblLeyCoulomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JPanelCustomersLayout.setVerticalGroup(
             JPanelCustomersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblCustomers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblLeyCoulomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         JPanelEmployees.setBackground(new java.awt.Color(102, 102, 255));
@@ -329,67 +342,45 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         JPanelSuppliers.setBackground(new java.awt.Color(102, 102, 255));
         JPanelSuppliers.setForeground(new java.awt.Color(255, 255, 255));
 
-        lblSuppliers.setBackground(new java.awt.Color(255, 255, 255));
-        lblSuppliers.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
-        lblSuppliers.setForeground(new java.awt.Color(255, 255, 255));
-        lblSuppliers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSuppliers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ImageSuppliers (1).png"))); // NOI18N
-        lblSuppliers.setText("Torque");
-        lblSuppliers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblTorque.setBackground(new java.awt.Color(255, 255, 255));
+        lblTorque.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
+        lblTorque.setForeground(new java.awt.Color(255, 255, 255));
+        lblTorque.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTorque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ImageSuppliers (1).png"))); // NOI18N
+        lblTorque.setText("Torque");
+        lblTorque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout JPanelSuppliersLayout = new javax.swing.GroupLayout(JPanelSuppliers);
         JPanelSuppliers.setLayout(JPanelSuppliersLayout);
         JPanelSuppliersLayout.setHorizontalGroup(
             JPanelSuppliersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblSuppliers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTorque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JPanelSuppliersLayout.setVerticalGroup(
             JPanelSuppliersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblSuppliers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTorque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         JPanelCategories.setBackground(new java.awt.Color(102, 102, 255));
         JPanelCategories.setForeground(new java.awt.Color(255, 255, 255));
 
-        lblCategories.setBackground(new java.awt.Color(255, 255, 255));
-        lblCategories.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
-        lblCategories.setForeground(new java.awt.Color(255, 255, 255));
-        lblCategories.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCategories.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ImageCategories (1).png"))); // NOI18N
-        lblCategories.setText("Potencial E.");
-        lblCategories.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblPotencialE.setBackground(new java.awt.Color(255, 255, 255));
+        lblPotencialE.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
+        lblPotencialE.setForeground(new java.awt.Color(255, 255, 255));
+        lblPotencialE.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPotencialE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ImageCategories (1).png"))); // NOI18N
+        lblPotencialE.setText("Potencial E.");
+        lblPotencialE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout JPanelCategoriesLayout = new javax.swing.GroupLayout(JPanelCategories);
         JPanelCategories.setLayout(JPanelCategoriesLayout);
         JPanelCategoriesLayout.setHorizontalGroup(
             JPanelCategoriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblCategories, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblPotencialE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JPanelCategoriesLayout.setVerticalGroup(
             JPanelCategoriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblCategories, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        JPanelReports.setBackground(new java.awt.Color(102, 102, 255));
-        JPanelReports.setForeground(new java.awt.Color(255, 255, 255));
-
-        lblReports.setBackground(new java.awt.Color(255, 255, 255));
-        lblReports.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
-        lblReports.setForeground(new java.awt.Color(255, 255, 255));
-        lblReports.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblReports.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ImageReports (1).png"))); // NOI18N
-        lblReports.setText("Reportes");
-        lblReports.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        javax.swing.GroupLayout JPanelReportsLayout = new javax.swing.GroupLayout(JPanelReports);
-        JPanelReports.setLayout(JPanelReportsLayout);
-        JPanelReportsLayout.setHorizontalGroup(
-            JPanelReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblReports, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        JPanelReportsLayout.setVerticalGroup(
-            JPanelReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblReports, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblPotencialE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         JPanelConfigurations.setBackground(new java.awt.Color(102, 102, 255));
@@ -450,7 +441,6 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
             .addComponent(JPanelEmployees, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(JPanelSuppliers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(JPanelCategories, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(JPanelReports, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(JPanelConfigurations, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(JPanelInstructions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -472,12 +462,10 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                 .addGap(18, 18, 18)
                 .addComponent(JPanelCategories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(JPanelReports, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(JPanelConfigurations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(JPanelInstructions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 780));
@@ -842,28 +830,28 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("Carga (C):");
 
-        txtPurchaseProductID.setEditable(false);
-        txtPurchaseProductID.setBackground(new java.awt.Color(255, 255, 255));
-        txtPurchaseProductID.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtPurchaseProductID.setForeground(new java.awt.Color(0, 0, 0));
-        txtPurchaseProductID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPurchaseProductID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtPurchaseProductID.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtPurchaseProductID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtPurchaseProductID.setEnabled(false);
-        txtPurchaseProductID.setSelectionColor(new java.awt.Color(102, 102, 255));
+        txtFieldEID.setEditable(false);
+        txtFieldEID.setBackground(new java.awt.Color(255, 255, 255));
+        txtFieldEID.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtFieldEID.setForeground(new java.awt.Color(0, 0, 0));
+        txtFieldEID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFieldEID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtFieldEID.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtFieldEID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtFieldEID.setEnabled(false);
+        txtFieldEID.setSelectionColor(new java.awt.Color(102, 102, 255));
 
-        txtPurchaseProductQuantity.setBackground(new java.awt.Color(255, 255, 255));
-        txtPurchaseProductQuantity.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtPurchaseProductQuantity.setForeground(new java.awt.Color(0, 0, 0));
-        txtPurchaseProductQuantity.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPurchaseProductQuantity.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtPurchaseProductQuantity.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtPurchaseProductQuantity.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtPurchaseProductQuantity.setSelectionColor(new java.awt.Color(102, 102, 255));
-        txtPurchaseProductQuantity.addActionListener(new java.awt.event.ActionListener() {
+        txtFieldECharge.setBackground(new java.awt.Color(255, 255, 255));
+        txtFieldECharge.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtFieldECharge.setForeground(new java.awt.Color(0, 0, 0));
+        txtFieldECharge.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFieldECharge.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtFieldECharge.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtFieldECharge.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtFieldECharge.setSelectionColor(new java.awt.Color(102, 102, 255));
+        txtFieldECharge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPurchaseProductQuantityActionPerformed(evt);
+                txtFieldEChargeActionPerformed(evt);
             }
         });
 
@@ -879,14 +867,14 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("Distancia (m):");
 
-        txtPurchasePrice.setBackground(new java.awt.Color(255, 255, 255));
-        txtPurchasePrice.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtPurchasePrice.setForeground(new java.awt.Color(0, 0, 0));
-        txtPurchasePrice.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPurchasePrice.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtPurchasePrice.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtPurchasePrice.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtPurchasePrice.setSelectionColor(new java.awt.Color(102, 102, 255));
+        txtFieldEDistance.setBackground(new java.awt.Color(255, 255, 255));
+        txtFieldEDistance.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtFieldEDistance.setForeground(new java.awt.Color(0, 0, 0));
+        txtFieldEDistance.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFieldEDistance.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtFieldEDistance.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtFieldEDistance.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtFieldEDistance.setSelectionColor(new java.awt.Color(102, 102, 255));
 
         jLabel28.setBackground(new java.awt.Color(255, 255, 255));
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
@@ -894,16 +882,16 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("Resultado:");
 
-        txtPurchaseTotal.setEditable(false);
-        txtPurchaseTotal.setBackground(new java.awt.Color(255, 255, 255));
-        txtPurchaseTotal.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtPurchaseTotal.setForeground(new java.awt.Color(0, 0, 0));
-        txtPurchaseTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPurchaseTotal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtPurchaseTotal.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtPurchaseTotal.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtPurchaseTotal.setEnabled(false);
-        txtPurchaseTotal.setSelectionColor(new java.awt.Color(102, 102, 255));
+        txtResultadoCampoE.setEditable(false);
+        txtResultadoCampoE.setBackground(new java.awt.Color(255, 255, 255));
+        txtResultadoCampoE.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtResultadoCampoE.setForeground(new java.awt.Color(0, 0, 0));
+        txtResultadoCampoE.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtResultadoCampoE.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtResultadoCampoE.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtResultadoCampoE.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtResultadoCampoE.setEnabled(false);
+        txtResultadoCampoE.setSelectionColor(new java.awt.Color(102, 102, 255));
 
         btnRegistrarCampo.setBackground(new java.awt.Color(255, 255, 255));
         btnRegistrarCampo.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
@@ -911,23 +899,23 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         btnRegistrarCampo.setText("Registrar");
         btnRegistrarCampo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnPurchaseBuy.setBackground(new java.awt.Color(255, 255, 255));
-        btnPurchaseBuy.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnPurchaseBuy.setForeground(new java.awt.Color(0, 0, 0));
-        btnPurchaseBuy.setText("Modificar");
-        btnPurchaseBuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificarCampoE.setBackground(new java.awt.Color(255, 255, 255));
+        btnModificarCampoE.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnModificarCampoE.setForeground(new java.awt.Color(0, 0, 0));
+        btnModificarCampoE.setText("Modificar");
+        btnModificarCampoE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnPurchaseDelete.setBackground(new java.awt.Color(255, 255, 255));
-        btnPurchaseDelete.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnPurchaseDelete.setForeground(new java.awt.Color(0, 0, 0));
-        btnPurchaseDelete.setText("Eliminar");
-        btnPurchaseDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminarCampoE.setBackground(new java.awt.Color(255, 255, 255));
+        btnEliminarCampoE.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnEliminarCampoE.setForeground(new java.awt.Color(0, 0, 0));
+        btnEliminarCampoE.setText("Eliminar");
+        btnEliminarCampoE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnPurchaseCancel.setBackground(new java.awt.Color(255, 255, 255));
-        btnPurchaseCancel.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnPurchaseCancel.setForeground(new java.awt.Color(0, 0, 0));
-        btnPurchaseCancel.setText("Cancelar");
-        btnPurchaseCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarCampo.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelarCampo.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnCancelarCampo.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelarCampo.setText("Cancelar");
+        btnCancelarCampo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel29.setBackground(new java.awt.Color(255, 255, 255));
         jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
@@ -935,23 +923,23 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel29.setText("Direccion:");
 
-        txtPurchaseID.setBackground(new java.awt.Color(255, 255, 255));
-        txtPurchaseID.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtPurchaseID.setForeground(new java.awt.Color(0, 0, 0));
-        txtPurchaseID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPurchaseID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtPurchaseID.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtPurchaseID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtPurchaseID.setSelectionColor(new java.awt.Color(102, 102, 255));
+        txtFieldEDirection.setBackground(new java.awt.Color(255, 255, 255));
+        txtFieldEDirection.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtFieldEDirection.setForeground(new java.awt.Color(0, 0, 0));
+        txtFieldEDirection.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFieldEDirection.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtFieldEDirection.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtFieldEDirection.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtFieldEDirection.setSelectionColor(new java.awt.Color(102, 102, 255));
 
-        txtPurchasePrice1.setBackground(new java.awt.Color(255, 255, 255));
-        txtPurchasePrice1.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtPurchasePrice1.setForeground(new java.awt.Color(0, 0, 0));
-        txtPurchasePrice1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPurchasePrice1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtPurchasePrice1.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtPurchasePrice1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtPurchasePrice1.setSelectionColor(new java.awt.Color(102, 102, 255));
+        txtFieldAngulo.setBackground(new java.awt.Color(255, 255, 255));
+        txtFieldAngulo.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtFieldAngulo.setForeground(new java.awt.Color(0, 0, 0));
+        txtFieldAngulo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFieldAngulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtFieldAngulo.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtFieldAngulo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtFieldAngulo.setSelectionColor(new java.awt.Color(102, 102, 255));
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
@@ -967,9 +955,9 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                             .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPurchaseProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPurchaseProductQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPurchaseID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFieldEID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFieldECharge, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFieldEDirection, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -978,16 +966,16 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addComponent(btnRegistrarCampo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPurchaseBuy)
+                        .addComponent(btnModificarCampoE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnPurchaseDelete)
+                        .addComponent(btnEliminarCampoE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnPurchaseCancel)))
+                        .addComponent(btnCancelarCampo)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtPurchasePrice)
-                    .addComponent(txtPurchaseTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(txtPurchasePrice1))
+                    .addComponent(txtFieldEDistance)
+                    .addComponent(txtResultadoCampoE, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(txtFieldAngulo))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
@@ -997,35 +985,35 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(jLabel26)
-                    .addComponent(txtPurchasePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPurchaseProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFieldEDistance, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFieldEID, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(jLabel25)
-                    .addComponent(txtPurchaseProductQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPurchasePrice1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFieldECharge, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFieldAngulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPurchaseTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtResultadoCampoE, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28)
                     .addComponent(jLabel29)
-                    .addComponent(txtPurchaseID, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFieldEDirection, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnPurchaseBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnPurchaseDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnPurchaseCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnModificarCampoE, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEliminarCampoE, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancelarCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnRegistrarCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(58, 58, 58))
         );
 
-        purchaseTable.setBackground(new java.awt.Color(255, 255, 255));
-        purchaseTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        purchaseTable.setFont(new java.awt.Font("Microsoft Tai Le", 1, 15)); // NOI18N
-        purchaseTable.setForeground(new java.awt.Color(0, 0, 0));
-        purchaseTable.setModel(new javax.swing.table.DefaultTableModel(
+        CamposTable.setBackground(new java.awt.Color(255, 255, 255));
+        CamposTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        CamposTable.setFont(new java.awt.Font("Microsoft Tai Le", 1, 15)); // NOI18N
+        CamposTable.setForeground(new java.awt.Color(0, 0, 0));
+        CamposTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1041,12 +1029,12 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                 return canEdit [columnIndex];
             }
         });
-        purchaseTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        purchaseTable.setGridColor(new java.awt.Color(255, 255, 255));
-        purchaseTable.setSelectionBackground(new java.awt.Color(102, 102, 255));
-        purchaseTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        purchaseTable.setShowHorizontalLines(true);
-        jScrollPane2.setViewportView(purchaseTable);
+        CamposTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CamposTable.setGridColor(new java.awt.Color(255, 255, 255));
+        CamposTable.setSelectionBackground(new java.awt.Color(102, 102, 255));
+        CamposTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        CamposTable.setShowHorizontalLines(true);
+        jScrollPane2.setViewportView(CamposTable);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -1076,22 +1064,22 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jPanel14.setForeground(new java.awt.Color(255, 255, 255));
 
         jPanel22.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Customer Panel", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Microsoft YaHei UI", 1, 15), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Ley de Coulomb", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Microsoft YaHei UI", 1, 15), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel22.setForeground(new java.awt.Color(0, 0, 0));
 
         lblCustomerName.setBackground(new java.awt.Color(255, 255, 255));
         lblCustomerName.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         lblCustomerName.setForeground(new java.awt.Color(0, 0, 0));
         lblCustomerName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCustomerName.setText("Carga:");
+        lblCustomerName.setText("Carga (C):");
 
-        txtCustomerName.setBackground(new java.awt.Color(255, 255, 255));
-        txtCustomerName.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtCustomerName.setForeground(new java.awt.Color(0, 0, 0));
-        txtCustomerName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCustomerName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtCustomerName.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtCustomerName.setSelectionColor(new java.awt.Color(102, 102, 255));
+        txtCargaLeyCoulomb.setBackground(new java.awt.Color(255, 255, 255));
+        txtCargaLeyCoulomb.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtCargaLeyCoulomb.setForeground(new java.awt.Color(0, 0, 0));
+        txtCargaLeyCoulomb.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCargaLeyCoulomb.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtCargaLeyCoulomb.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtCargaLeyCoulomb.setSelectionColor(new java.awt.Color(102, 102, 255));
 
         lblCustomerID.setBackground(new java.awt.Color(255, 255, 255));
         lblCustomerID.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
@@ -1099,40 +1087,67 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         lblCustomerID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCustomerID.setText("ID:");
 
-        txtCustomerID.setEditable(false);
-        txtCustomerID.setBackground(new java.awt.Color(255, 255, 255));
-        txtCustomerID.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtCustomerID.setForeground(new java.awt.Color(0, 0, 0));
-        txtCustomerID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCustomerID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtCustomerID.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtCustomerID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtCustomerID.setEnabled(false);
-        txtCustomerID.setSelectionColor(new java.awt.Color(102, 102, 255));
+        txtFuerzaID.setEditable(false);
+        txtFuerzaID.setBackground(new java.awt.Color(255, 255, 255));
+        txtFuerzaID.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtFuerzaID.setForeground(new java.awt.Color(0, 0, 0));
+        txtFuerzaID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFuerzaID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtFuerzaID.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtFuerzaID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtFuerzaID.setEnabled(false);
+        txtFuerzaID.setSelectionColor(new java.awt.Color(102, 102, 255));
 
-        btnCustomerRegister.setBackground(new java.awt.Color(255, 255, 255));
-        btnCustomerRegister.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnCustomerRegister.setForeground(new java.awt.Color(0, 0, 0));
-        btnCustomerRegister.setText("Register");
-        btnCustomerRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrarFuerza.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegistrarFuerza.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnRegistrarFuerza.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegistrarFuerza.setText("Registrar");
+        btnRegistrarFuerza.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnCustomerModify.setBackground(new java.awt.Color(255, 255, 255));
-        btnCustomerModify.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnCustomerModify.setForeground(new java.awt.Color(0, 0, 0));
-        btnCustomerModify.setText("Modify");
-        btnCustomerModify.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificarFuerza.setBackground(new java.awt.Color(255, 255, 255));
+        btnModificarFuerza.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnModificarFuerza.setForeground(new java.awt.Color(0, 0, 0));
+        btnModificarFuerza.setText("Modificar");
+        btnModificarFuerza.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnCustomerDelete.setBackground(new java.awt.Color(255, 255, 255));
-        btnCustomerDelete.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnCustomerDelete.setForeground(new java.awt.Color(0, 0, 0));
-        btnCustomerDelete.setText("Delete");
-        btnCustomerDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminarFuerza.setBackground(new java.awt.Color(255, 255, 255));
+        btnEliminarFuerza.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnEliminarFuerza.setForeground(new java.awt.Color(0, 0, 0));
+        btnEliminarFuerza.setText("Eliminar");
+        btnEliminarFuerza.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnCustomerCancel.setBackground(new java.awt.Color(255, 255, 255));
-        btnCustomerCancel.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnCustomerCancel.setForeground(new java.awt.Color(0, 0, 0));
-        btnCustomerCancel.setText("Cancel");
-        btnCustomerCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarFuerza.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelarFuerza.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnCancelarFuerza.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelarFuerza.setText("Cancelar");
+        btnCancelarFuerza.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Campo E.");
+
+        cmbCampoE.setBackground(new java.awt.Color(255, 255, 255));
+        cmbCampoE.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        cmbCampoE.setForeground(new java.awt.Color(0, 0, 0));
+        cmbCampoE.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblCustomerName1.setBackground(new java.awt.Color(255, 255, 255));
+        lblCustomerName1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        lblCustomerName1.setForeground(new java.awt.Color(0, 0, 0));
+        lblCustomerName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCustomerName1.setText("Resultado:");
+
+        txtResultadoLeyCoulomb.setEditable(false);
+        txtResultadoLeyCoulomb.setBackground(new java.awt.Color(255, 255, 255));
+        txtResultadoLeyCoulomb.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtResultadoLeyCoulomb.setForeground(new java.awt.Color(0, 0, 0));
+        txtResultadoLeyCoulomb.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtResultadoLeyCoulomb.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtResultadoLeyCoulomb.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtResultadoLeyCoulomb.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtResultadoLeyCoulomb.setEnabled(false);
+        txtResultadoLeyCoulomb.setSelectionColor(new java.awt.Color(102, 102, 255));
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
@@ -1142,22 +1157,36 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                 .addGap(20, 20, 20)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addComponent(btnCustomerRegister)
+                        .addComponent(btnRegistrarFuerza)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCustomerModify)
+                        .addComponent(btnModificarFuerza)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCustomerDelete)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCustomerCancel))
-                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addComponent(btnEliminarFuerza))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblCustomerID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblCustomerName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblCustomerName))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCustomerName, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(txtCustomerID))))
-                .addContainerGap(258, Short.MAX_VALUE))
+                            .addComponent(txtCargaLeyCoulomb)
+                            .addComponent(txtFuerzaID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48)))
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addComponent(lblCustomerName1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18))
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(14, 14, 14)))
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbCampoE, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtResultadoLeyCoulomb, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(97, 97, 97))
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addComponent(btnCancelarFuerza)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1165,60 +1194,50 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                 .addGap(20, 20, 20)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCustomerID)
-                    .addComponent(txtCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                    .addComponent(txtFuerzaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(cmbCampoE, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCustomerName)
-                    .addComponent(txtCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(66, 66, 66)
+                    .addComponent(txtCargaLeyCoulomb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCustomerName1)
+                    .addComponent(txtResultadoLeyCoulomb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCustomerRegister)
-                    .addComponent(btnCustomerModify)
-                    .addComponent(btnCustomerDelete)
-                    .addComponent(btnCustomerCancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnRegistrarFuerza)
+                    .addComponent(btnModificarFuerza)
+                    .addComponent(btnEliminarFuerza)
+                    .addComponent(btnCancelarFuerza))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        jLabel36.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel36.setFont(new java.awt.Font("Microsoft YaHei", 1, 15)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel36.setText("Search by name:");
-
-        txtSearchCustomer.setBackground(new java.awt.Color(255, 255, 255));
-        txtSearchCustomer.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
-        txtSearchCustomer.setForeground(new java.awt.Color(0, 0, 0));
-        txtSearchCustomer.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSearchCustomer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtSearchCustomer.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtSearchCustomer.setSelectionColor(new java.awt.Color(102, 102, 255));
-
-        customersTable.setBackground(new java.awt.Color(255, 255, 255));
-        customersTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        customersTable.setFont(new java.awt.Font("Microsoft Tai Le", 1, 15)); // NOI18N
-        customersTable.setForeground(new java.awt.Color(0, 0, 0));
-        customersTable.setModel(new javax.swing.table.DefaultTableModel(
+        fuerzasTable.setBackground(new java.awt.Color(255, 255, 255));
+        fuerzasTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        fuerzasTable.setFont(new java.awt.Font("Microsoft Tai Le", 1, 15)); // NOI18N
+        fuerzasTable.setForeground(new java.awt.Color(0, 0, 0));
+        fuerzasTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Name", "Address", "Telephone", "Mail"
+                "ID", "Carga", "Campo E", "Fuerza"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        customersTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        customersTable.setGridColor(new java.awt.Color(255, 255, 255));
-        customersTable.setSelectionBackground(new java.awt.Color(102, 102, 255));
-        customersTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        customersTable.setShowHorizontalLines(true);
-        jScrollPane3.setViewportView(customersTable);
+        fuerzasTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fuerzasTable.setGridColor(new java.awt.Color(255, 255, 255));
+        fuerzasTable.setSelectionBackground(new java.awt.Color(102, 102, 255));
+        fuerzasTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        fuerzasTable.setShowHorizontalLines(true);
+        jScrollPane3.setViewportView(fuerzasTable);
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -1226,28 +1245,19 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(80, 80, 80)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jLabel36)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSearchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel36)
-                    .addComponent(txtSearchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
         );
 
         jTabbedPanePanels.addTab("Ley de Coulomb", jPanel14);
@@ -1307,7 +1317,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         cmbEmployeeRol.setBackground(new java.awt.Color(255, 255, 255));
         cmbEmployeeRol.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
         cmbEmployeeRol.setForeground(new java.awt.Color(0, 0, 0));
-        cmbEmployeeRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Auxiliary", "Administrator" }));
+        cmbEmployeeRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrator" }));
         cmbEmployeeRol.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         cmbEmployeeRol.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -1551,7 +1561,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jPanel16.setForeground(new java.awt.Color(255, 255, 255));
 
         jPanel24.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Supplier Panel", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Microsoft YaHei", 1, 15), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Calcular Torque", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Microsoft YaHei", 1, 15), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel24.setForeground(new java.awt.Color(0, 0, 0));
         jPanel24.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel24.setPreferredSize(new java.awt.Dimension(829, 245));
@@ -1560,126 +1570,112 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jLabel44.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(0, 0, 0));
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel44.setText("Name:");
+        jLabel44.setText("ID:");
 
-        txtSupplierName.setBackground(new java.awt.Color(255, 255, 255));
-        txtSupplierName.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtSupplierName.setForeground(new java.awt.Color(0, 0, 0));
-        txtSupplierName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSupplierName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtSupplierName.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtSupplierName.setSelectionColor(new java.awt.Color(102, 102, 255));
+        txtTorqueID.setEditable(false);
+        txtTorqueID.setBackground(new java.awt.Color(255, 255, 255));
+        txtTorqueID.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtTorqueID.setForeground(new java.awt.Color(0, 0, 0));
+        txtTorqueID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTorqueID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtTorqueID.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtTorqueID.setEnabled(false);
+        txtTorqueID.setSelectionColor(new java.awt.Color(102, 102, 255));
 
         jLabel45.setBackground(new java.awt.Color(255, 255, 255));
         jLabel45.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(0, 0, 0));
         jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel45.setText("Address:");
-
-        txtSupplierAddress.setBackground(new java.awt.Color(255, 255, 255));
-        txtSupplierAddress.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtSupplierAddress.setForeground(new java.awt.Color(0, 0, 0));
-        txtSupplierAddress.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSupplierAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtSupplierAddress.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtSupplierAddress.setSelectionColor(new java.awt.Color(102, 102, 255));
+        jLabel45.setText("Campo E.");
 
         jLabel46.setBackground(new java.awt.Color(255, 255, 255));
         jLabel46.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(0, 0, 0));
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel46.setText("Telephone:");
+        jLabel46.setText("Angulo(°):");
 
-        txtSupplierTelephone.setBackground(new java.awt.Color(255, 255, 255));
-        txtSupplierTelephone.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtSupplierTelephone.setForeground(new java.awt.Color(0, 0, 0));
-        txtSupplierTelephone.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSupplierTelephone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtSupplierTelephone.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtSupplierTelephone.setSelectionColor(new java.awt.Color(102, 102, 255));
-
-        jLabel47.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel47.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        jLabel47.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel47.setText("Description:");
+        txtTorqueAngulo.setBackground(new java.awt.Color(255, 255, 255));
+        txtTorqueAngulo.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtTorqueAngulo.setForeground(new java.awt.Color(0, 0, 0));
+        txtTorqueAngulo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTorqueAngulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtTorqueAngulo.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtTorqueAngulo.setSelectionColor(new java.awt.Color(102, 102, 255));
 
         jLabel48.setBackground(new java.awt.Color(255, 255, 255));
         jLabel48.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(0, 0, 0));
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel48.setText("ID:");
+        jLabel48.setText("Distancia (m):");
 
-        txtSupplierID.setEditable(false);
-        txtSupplierID.setBackground(new java.awt.Color(255, 255, 255));
-        txtSupplierID.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtSupplierID.setForeground(new java.awt.Color(0, 0, 0));
-        txtSupplierID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSupplierID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtSupplierID.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtSupplierID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtSupplierID.setEnabled(false);
-        txtSupplierID.setSelectionColor(new java.awt.Color(102, 102, 255));
+        txtTorqueDistancia.setBackground(new java.awt.Color(255, 255, 255));
+        txtTorqueDistancia.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtTorqueDistancia.setForeground(new java.awt.Color(0, 0, 0));
+        txtTorqueDistancia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTorqueDistancia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtTorqueDistancia.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtTorqueDistancia.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtTorqueDistancia.setSelectionColor(new java.awt.Color(102, 102, 255));
 
         jLabel49.setBackground(new java.awt.Color(255, 255, 255));
         jLabel49.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(0, 0, 0));
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel49.setText("Mail:");
+        jLabel49.setText("Carga (C):");
 
-        txtSupplierMail.setBackground(new java.awt.Color(255, 255, 255));
-        txtSupplierMail.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtSupplierMail.setForeground(new java.awt.Color(0, 0, 0));
-        txtSupplierMail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSupplierMail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtSupplierMail.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtSupplierMail.setSelectionColor(new java.awt.Color(102, 102, 255));
+        txtTorqueCarga.setBackground(new java.awt.Color(255, 255, 255));
+        txtTorqueCarga.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtTorqueCarga.setForeground(new java.awt.Color(0, 0, 0));
+        txtTorqueCarga.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTorqueCarga.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtTorqueCarga.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtTorqueCarga.setSelectionColor(new java.awt.Color(102, 102, 255));
 
         jLabel50.setBackground(new java.awt.Color(255, 255, 255));
         jLabel50.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel50.setForeground(new java.awt.Color(0, 0, 0));
         jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel50.setText("City:");
+        jLabel50.setText("Resultado:");
 
-        txtSupplierCity.setBackground(new java.awt.Color(255, 255, 255));
-        txtSupplierCity.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtSupplierCity.setForeground(new java.awt.Color(0, 0, 0));
-        txtSupplierCity.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSupplierCity.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtSupplierCity.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtSupplierCity.setSelectionColor(new java.awt.Color(102, 102, 255));
+        txtTorqueResultado.setEditable(false);
+        txtTorqueResultado.setBackground(new java.awt.Color(255, 255, 255));
+        txtTorqueResultado.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        txtTorqueResultado.setForeground(new java.awt.Color(0, 0, 0));
+        txtTorqueResultado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTorqueResultado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtTorqueResultado.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtTorqueResultado.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtTorqueResultado.setEnabled(false);
+        txtTorqueResultado.setSelectionColor(new java.awt.Color(102, 102, 255));
 
-        btnSupplierRegister.setBackground(new java.awt.Color(255, 255, 255));
-        btnSupplierRegister.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnSupplierRegister.setForeground(new java.awt.Color(0, 0, 0));
-        btnSupplierRegister.setText("Register");
-        btnSupplierRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrarTorque.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegistrarTorque.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnRegistrarTorque.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegistrarTorque.setText("Registrar");
+        btnRegistrarTorque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnSupplierModify.setBackground(new java.awt.Color(255, 255, 255));
-        btnSupplierModify.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnSupplierModify.setForeground(new java.awt.Color(0, 0, 0));
-        btnSupplierModify.setText("Modify");
-        btnSupplierModify.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificarTorque.setBackground(new java.awt.Color(255, 255, 255));
+        btnModificarTorque.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnModificarTorque.setForeground(new java.awt.Color(0, 0, 0));
+        btnModificarTorque.setText("Modificar");
+        btnModificarTorque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnSupplierDelete.setBackground(new java.awt.Color(255, 255, 255));
-        btnSupplierDelete.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnSupplierDelete.setForeground(new java.awt.Color(0, 0, 0));
-        btnSupplierDelete.setText("Delete");
-        btnSupplierDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminarTorque.setBackground(new java.awt.Color(255, 255, 255));
+        btnEliminarTorque.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnEliminarTorque.setForeground(new java.awt.Color(0, 0, 0));
+        btnEliminarTorque.setText("Eliminar");
+        btnEliminarTorque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnSupplierCancel.setBackground(new java.awt.Color(255, 255, 255));
-        btnSupplierCancel.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnSupplierCancel.setForeground(new java.awt.Color(0, 0, 0));
-        btnSupplierCancel.setText("Cancel");
-        btnSupplierCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarTorque.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelarTorque.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnCancelarTorque.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelarTorque.setText("Cancelar");
+        btnCancelarTorque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        txtSupplierDescription.setBackground(new java.awt.Color(255, 255, 255));
-        txtSupplierDescription.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtSupplierDescription.setForeground(new java.awt.Color(0, 0, 0));
-        txtSupplierDescription.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSupplierDescription.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtSupplierDescription.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtSupplierDescription.setSelectionColor(new java.awt.Color(102, 102, 255));
+        cmbCampoE2.setBackground(new java.awt.Color(255, 255, 255));
+        cmbCampoE2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        cmbCampoE2.setForeground(new java.awt.Color(0, 0, 0));
+        cmbCampoE2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -1689,37 +1685,33 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                 .addGap(20, 20, 20)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel24Layout.createSequentialGroup()
-                        .addComponent(btnSupplierRegister)
+                        .addComponent(btnRegistrarTorque)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSupplierModify)
+                        .addComponent(btnModificarTorque)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSupplierDelete)
+                        .addComponent(btnEliminarTorque)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSupplierCancel))
+                        .addComponent(btnCancelarTorque))
                     .addGroup(jPanel24Layout.createSequentialGroup()
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTorqueID)
+                            .addComponent(txtTorqueAngulo, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                            .addComponent(cmbCampoE2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel24Layout.createSequentialGroup()
-                                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtSupplierName)
-                                    .addComponent(txtSupplierAddress)
-                                    .addComponent(txtSupplierTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSupplierID, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
-                                    .addComponent(txtSupplierMail, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtSupplierCity)))
-                            .addComponent(txtSupplierDescription))))
+                            .addComponent(txtTorqueDistancia, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                            .addComponent(txtTorqueCarga, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtTorqueResultado))))
                 .addGap(20, 20, 20))
         );
         jPanel24Layout.setVerticalGroup(
@@ -1728,74 +1720,56 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                 .addGap(20, 20, 20)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel44)
-                    .addComponent(txtSupplierName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTorqueID, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel49)
-                    .addComponent(txtSupplierMail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTorqueCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel45)
-                    .addComponent(txtSupplierAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel48)
-                    .addComponent(txtSupplierID, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTorqueDistancia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbCampoE2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel46)
-                    .addComponent(txtSupplierTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTorqueAngulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel50)
-                    .addComponent(txtSupplierCity, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel47)
-                    .addComponent(txtSupplierDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTorqueResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSupplierRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSupplierModify, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSupplierDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSupplierCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                    .addComponent(btnRegistrarTorque, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificarTorque, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarTorque, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelarTorque, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
-        supplierTable.setBackground(new java.awt.Color(255, 255, 255));
-        supplierTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        supplierTable.setFont(new java.awt.Font("Microsoft Tai Le", 1, 15)); // NOI18N
-        supplierTable.setForeground(new java.awt.Color(0, 0, 0));
-        supplierTable.setModel(new javax.swing.table.DefaultTableModel(
+        torqueTable.setBackground(new java.awt.Color(255, 255, 255));
+        torqueTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        torqueTable.setFont(new java.awt.Font("Microsoft Tai Le", 1, 15)); // NOI18N
+        torqueTable.setForeground(new java.awt.Color(0, 0, 0));
+        torqueTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Name", "Description", "Address", "Telephone", "Mail", "City"
+                "ID", "Campo E.", "Carga", "Distancia", "Angulo", "Torque"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        supplierTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        supplierTable.setGridColor(new java.awt.Color(255, 255, 255));
-        supplierTable.setSelectionBackground(new java.awt.Color(102, 102, 255));
-        supplierTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        supplierTable.setShowHorizontalLines(true);
-        jScrollPane5.setViewportView(supplierTable);
-
-        jLabel51.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel51.setFont(new java.awt.Font("Microsoft YaHei", 1, 15)); // NOI18N
-        jLabel51.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel51.setText("Search by name:");
-
-        txtSearchSupplier.setBackground(new java.awt.Color(255, 255, 255));
-        txtSearchSupplier.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
-        txtSearchSupplier.setForeground(new java.awt.Color(0, 0, 0));
-        txtSearchSupplier.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSearchSupplier.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtSearchSupplier.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtSearchSupplier.setSelectionColor(new java.awt.Color(102, 102, 255));
+        torqueTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        torqueTable.setGridColor(new java.awt.Color(255, 255, 255));
+        torqueTable.setSelectionBackground(new java.awt.Color(102, 102, 255));
+        torqueTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        torqueTable.setShowHorizontalLines(true);
+        jScrollPane5.setViewportView(torqueTable);
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -1803,14 +1777,9 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addComponent(jLabel51)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSearchSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane5)))
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
@@ -1818,12 +1787,8 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel51)
-                    .addComponent(txtSearchSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -1834,7 +1799,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jPanel17.setForeground(new java.awt.Color(255, 255, 255));
 
         jPanel25.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel25.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Category Panel", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Microsoft YaHei", 1, 15), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel25.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Potencial E.", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Microsoft YaHei", 1, 15), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel25.setForeground(new java.awt.Color(0, 0, 0));
         jPanel25.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel25.setPreferredSize(new java.awt.Dimension(829, 245));
@@ -1843,56 +1808,78 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jLabel52.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(0, 0, 0));
         jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel52.setText("Name:");
+        jLabel52.setText("ID:");
 
-        txtCategoryName.setBackground(new java.awt.Color(255, 255, 255));
-        txtCategoryName.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtCategoryName.setForeground(new java.awt.Color(0, 0, 0));
-        txtCategoryName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCategoryName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtCategoryName.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtCategoryName.setSelectionColor(new java.awt.Color(102, 102, 255));
+        txtPotencialEID.setBackground(new java.awt.Color(255, 255, 255));
+        txtPotencialEID.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtPotencialEID.setForeground(new java.awt.Color(0, 0, 0));
+        txtPotencialEID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPotencialEID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtPotencialEID.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtPotencialEID.setSelectionColor(new java.awt.Color(102, 102, 255));
+
+        btnRegistrarPotencialE.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegistrarPotencialE.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnRegistrarPotencialE.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegistrarPotencialE.setText("Registrar");
+        btnRegistrarPotencialE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnModificarPotencialE.setBackground(new java.awt.Color(255, 255, 255));
+        btnModificarPotencialE.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnModificarPotencialE.setForeground(new java.awt.Color(0, 0, 0));
+        btnModificarPotencialE.setText("Modificar");
+        btnModificarPotencialE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnEliminarPotencialE.setBackground(new java.awt.Color(255, 255, 255));
+        btnEliminarPotencialE.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnEliminarPotencialE.setForeground(new java.awt.Color(0, 0, 0));
+        btnEliminarPotencialE.setText("Eliminar");
+        btnEliminarPotencialE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnCancelarPotencialE.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelarPotencialE.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        btnCancelarPotencialE.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelarPotencialE.setText("Cancelar");
+        btnCancelarPotencialE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jLabel54.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel54.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel54.setText("Campo E.");
+
+        cmbCampoE3.setBackground(new java.awt.Color(255, 255, 255));
+        cmbCampoE3.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        cmbCampoE3.setForeground(new java.awt.Color(0, 0, 0));
+        cmbCampoE3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel53.setBackground(new java.awt.Color(255, 255, 255));
         jLabel53.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         jLabel53.setForeground(new java.awt.Color(0, 0, 0));
         jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel53.setText("ID:");
+        jLabel53.setText("Distancia (m)");
 
-        txtCategoryID.setEditable(false);
-        txtCategoryID.setBackground(new java.awt.Color(255, 255, 255));
-        txtCategoryID.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        txtCategoryID.setForeground(new java.awt.Color(0, 0, 0));
-        txtCategoryID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCategoryID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtCategoryID.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtCategoryID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtCategoryID.setEnabled(false);
-        txtCategoryID.setSelectionColor(new java.awt.Color(102, 102, 255));
+        txtPotencialEDistancia.setBackground(new java.awt.Color(255, 255, 255));
+        txtPotencialEDistancia.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtPotencialEDistancia.setForeground(new java.awt.Color(0, 0, 0));
+        txtPotencialEDistancia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPotencialEDistancia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtPotencialEDistancia.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtPotencialEDistancia.setSelectionColor(new java.awt.Color(102, 102, 255));
 
-        btnCategoryRegister.setBackground(new java.awt.Color(255, 255, 255));
-        btnCategoryRegister.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnCategoryRegister.setForeground(new java.awt.Color(0, 0, 0));
-        btnCategoryRegister.setText("Register");
-        btnCategoryRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel61.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel61.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel61.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel61.setText("Resultado:");
 
-        btnCategoryModify.setBackground(new java.awt.Color(255, 255, 255));
-        btnCategoryModify.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnCategoryModify.setForeground(new java.awt.Color(0, 0, 0));
-        btnCategoryModify.setText("Modify");
-        btnCategoryModify.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        btnCategoryDelete.setBackground(new java.awt.Color(255, 255, 255));
-        btnCategoryDelete.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnCategoryDelete.setForeground(new java.awt.Color(0, 0, 0));
-        btnCategoryDelete.setText("Delete");
-        btnCategoryDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        btnCategoryCancel.setBackground(new java.awt.Color(255, 255, 255));
-        btnCategoryCancel.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        btnCategoryCancel.setForeground(new java.awt.Color(0, 0, 0));
-        btnCategoryCancel.setText("Cancel");
-        btnCategoryCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtResultadoPotencialE.setBackground(new java.awt.Color(255, 255, 255));
+        txtResultadoPotencialE.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        txtResultadoPotencialE.setForeground(new java.awt.Color(0, 0, 0));
+        txtResultadoPotencialE.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtResultadoPotencialE.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtResultadoPotencialE.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtResultadoPotencialE.setSelectionColor(new java.awt.Color(102, 102, 255));
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
@@ -1902,22 +1889,32 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                 .addGap(20, 20, 20)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel25Layout.createSequentialGroup()
-                        .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCategoryName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel53)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCategoryID, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnRegistrarPotencialE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnModificarPotencialE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminarPotencialE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelarPotencialE))
                     .addGroup(jPanel25Layout.createSequentialGroup()
-                        .addComponent(btnCategoryRegister)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCategoryModify)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCategoryDelete)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCategoryCancel)))
-                .addContainerGap(121, Short.MAX_VALUE))
+                        .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel25Layout.createSequentialGroup()
+                                .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPotencialEDistancia, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel61, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel25Layout.createSequentialGroup()
+                                .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPotencialEID, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbCampoE3, 0, 226, Short.MAX_VALUE)
+                            .addComponent(txtResultadoPotencialE))))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel25Layout.setVerticalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1925,44 +1922,50 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                 .addGap(20, 20, 20)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel52)
-                    .addComponent(txtCategoryName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel53)
-                    .addComponent(txtCategoryID, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPotencialEID, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel54)
+                    .addComponent(cmbCampoE3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCategoryRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCategoryModify, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCategoryDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCategoryCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(jLabel53)
+                    .addComponent(txtPotencialEDistancia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel61)
+                    .addComponent(txtResultadoPotencialE, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrarPotencialE, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificarPotencialE, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarPotencialE, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelarPotencialE, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        categoryTable.setBackground(new java.awt.Color(255, 255, 255));
-        categoryTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        categoryTable.setFont(new java.awt.Font("Microsoft Tai Le", 1, 15)); // NOI18N
-        categoryTable.setForeground(new java.awt.Color(0, 0, 0));
-        categoryTable.setModel(new javax.swing.table.DefaultTableModel(
+        potencialETable.setBackground(new java.awt.Color(255, 255, 255));
+        potencialETable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        potencialETable.setFont(new java.awt.Font("Microsoft Tai Le", 1, 15)); // NOI18N
+        potencialETable.setForeground(new java.awt.Color(0, 0, 0));
+        potencialETable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Name"
+                "ID", "Campo E.", "Distancia", "Potencial"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        categoryTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        categoryTable.setGridColor(new java.awt.Color(255, 255, 255));
-        categoryTable.setSelectionBackground(new java.awt.Color(102, 102, 255));
-        categoryTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        categoryTable.setShowHorizontalLines(true);
-        jScrollPane6.setViewportView(categoryTable);
+        potencialETable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        potencialETable.setGridColor(new java.awt.Color(255, 255, 255));
+        potencialETable.setSelectionBackground(new java.awt.Color(102, 102, 255));
+        potencialETable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        potencialETable.setShowHorizontalLines(true);
+        jScrollPane6.setViewportView(potencialETable);
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -1983,98 +1986,13 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
             .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel17Layout.createSequentialGroup()
                     .addGap(28, 28, 28)
-                    .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(70, Short.MAX_VALUE)))
         );
 
         jTabbedPanePanels.addTab("Potencial E.", jPanel17);
-
-        jPanel18.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel18.setForeground(new java.awt.Color(255, 255, 255));
-
-        reportsTable.setBackground(new java.awt.Color(255, 255, 255));
-        reportsTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        reportsTable.setFont(new java.awt.Font("Microsoft Tai Le", 1, 15)); // NOI18N
-        reportsTable.setForeground(new java.awt.Color(0, 0, 0));
-        reportsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Buyer", "Gain", "Date of purchase"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        reportsTable.setGridColor(new java.awt.Color(255, 255, 255));
-        reportsTable.setSelectionBackground(new java.awt.Color(102, 102, 255));
-        reportsTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        reportsTable.setShowHorizontalLines(true);
-        jScrollPane7.setViewportView(reportsTable);
-
-        jLabel54.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel54.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 30)); // NOI18N
-        jLabel54.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel54.setText("Purchases made");
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 20)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Total:");
-
-        txtPurchaseReport.setEditable(false);
-        txtPurchaseReport.setBackground(new java.awt.Color(255, 255, 255));
-        txtPurchaseReport.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
-        txtPurchaseReport.setForeground(new java.awt.Color(0, 0, 0));
-        txtPurchaseReport.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPurchaseReport.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtPurchaseReport.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtPurchaseReport.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtPurchaseReport.setEnabled(false);
-        txtPurchaseReport.setSelectionColor(new java.awt.Color(102, 102, 255));
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
-                        .addComponent(jLabel54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPurchaseReport, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(127, Short.MAX_VALUE))
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPurchaseReport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(119, Short.MAX_VALUE))
-        );
-
-        jTabbedPanePanels.addTab("Reportes", jPanel18);
 
         jPanel19.setBackground(new java.awt.Color(204, 204, 204));
         jPanel19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -2367,11 +2285,12 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPurchaseProductQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPurchaseProductQuantityActionPerformed
+    private void txtFieldEChargeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldEChargeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPurchaseProductQuantityActionPerformed
+    }//GEN-LAST:event_txtFieldEChargeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTable CamposTable;
     public javax.swing.JTable ConsumeTable;
     public javax.swing.JPanel JPanelCategories;
     public javax.swing.JPanel JPanelConfigurations;
@@ -2380,39 +2299,40 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
     public javax.swing.JPanel JPanelEmployees;
     public javax.swing.JPanel JPanelInstructions;
     public javax.swing.JPanel JPanelPurchases;
-    public javax.swing.JPanel JPanelReports;
     public javax.swing.JPanel JPanelSuppliers;
     public javax.swing.JButton btnBack;
-    public javax.swing.JButton btnCategoryCancel;
-    public javax.swing.JButton btnCategoryDelete;
-    public javax.swing.JButton btnCategoryModify;
-    public javax.swing.JButton btnCategoryRegister;
+    public javax.swing.JButton btnCancelarCampo;
+    public javax.swing.JButton btnCancelarFuerza;
+    public javax.swing.JButton btnCancelarPotencialE;
+    public javax.swing.JButton btnCancelarTorque;
     public javax.swing.JButton btnChangePersonalData;
     public javax.swing.JButton btnConsumeCancel;
     public javax.swing.JButton btnConsumeDelete;
     public javax.swing.JButton btnConsumeModify;
     public javax.swing.JButton btnConsumeRegister;
-    public javax.swing.JButton btnCustomerCancel;
-    public javax.swing.JButton btnCustomerDelete;
-    public javax.swing.JButton btnCustomerModify;
-    public javax.swing.JButton btnCustomerRegister;
+    public javax.swing.JButton btnEliminarCampoE;
+    public javax.swing.JButton btnEliminarFuerza;
+    public javax.swing.JButton btnEliminarPotencialE;
+    public javax.swing.JButton btnEliminarTorque;
     public javax.swing.JButton btnEmployeeCancel;
     public javax.swing.JButton btnEmployeeDelete;
     public javax.swing.JButton btnEmployeeRegister;
     public javax.swing.JButton btnEmployeeUpdate;
+    public javax.swing.JButton btnModificarCampoE;
+    public javax.swing.JButton btnModificarFuerza;
+    public javax.swing.JButton btnModificarPotencialE;
+    public javax.swing.JButton btnModificarTorque;
     public javax.swing.JButton btnModifyPasswordActual;
-    public javax.swing.JButton btnPurchaseBuy;
-    public javax.swing.JButton btnPurchaseCancel;
-    public javax.swing.JButton btnPurchaseDelete;
     public javax.swing.JButton btnRegistrarCampo;
-    public javax.swing.JButton btnSupplierCancel;
-    public javax.swing.JButton btnSupplierDelete;
-    public javax.swing.JButton btnSupplierModify;
-    public javax.swing.JButton btnSupplierRegister;
-    public javax.swing.JTable categoryTable;
+    public javax.swing.JButton btnRegistrarFuerza;
+    public javax.swing.JButton btnRegistrarPotencialE;
+    public javax.swing.JButton btnRegistrarTorque;
+    public javax.swing.JComboBox<String> cmbCampoE;
+    public javax.swing.JComboBox<String> cmbCampoE2;
+    public javax.swing.JComboBox<String> cmbCampoE3;
     public javax.swing.JComboBox<String> cmbEmployeeRol;
-    public javax.swing.JTable customersTable;
     public javax.swing.JTable employeesTable;
+    public javax.swing.JTable fuerzasTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -2430,11 +2350,9 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -2442,12 +2360,10 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
@@ -2458,13 +2374,14 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
@@ -2483,36 +2400,31 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     public javax.swing.JTabbedPane jTabbedPanePanels;
     private javax.swing.JTextArea jTextArea1;
-    public javax.swing.JLabel lblCategories;
+    public javax.swing.JLabel lblCampoE;
     public javax.swing.JLabel lblConfigurations;
     public javax.swing.JLabel lblConsumeE;
     private javax.swing.JLabel lblCustomerID;
     private javax.swing.JLabel lblCustomerName;
-    public javax.swing.JLabel lblCustomers;
+    private javax.swing.JLabel lblCustomerName1;
     public javax.swing.JLabel lblEmployeeNameUser;
     public javax.swing.JLabel lblEmployeeRol;
     public javax.swing.JLabel lblEmployees;
     public javax.swing.JLabel lblInstructions;
-    public javax.swing.JLabel lblPurchases;
-    public javax.swing.JLabel lblReports;
-    public javax.swing.JLabel lblSuppliers;
-    public javax.swing.JTable purchaseTable;
-    public javax.swing.JTable reportsTable;
-    public javax.swing.JTable supplierTable;
-    public javax.swing.JTextField txtCategoryID;
-    public javax.swing.JTextField txtCategoryName;
+    public javax.swing.JLabel lblLeyCoulomb;
+    public javax.swing.JLabel lblPotencialE;
+    public javax.swing.JLabel lblTorque;
+    public javax.swing.JTable potencialETable;
+    public javax.swing.JTable torqueTable;
+    public javax.swing.JTextField txtCargaLeyCoulomb;
     public javax.swing.JTextField txtConsumeDevice;
     public javax.swing.JTextField txtConsumeID;
     public javax.swing.JTextField txtConsumePower;
     public javax.swing.JTextField txtConsumeResult;
     public javax.swing.JTextField txtConsumeTariff;
     public javax.swing.JTextField txtConsumeTime;
-    public javax.swing.JTextField txtCustomerID;
-    public javax.swing.JTextField txtCustomerName;
     public javax.swing.JTextField txtEmployeeAddress;
     public javax.swing.JTextField txtEmployeeAddressConfigurations;
     public javax.swing.JTextField txtEmployeeEmail;
@@ -2525,23 +2437,23 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
     public javax.swing.JTextField txtEmployeePasswordConfiguration;
     public javax.swing.JTextField txtEmployeePasswordConfirm;
     public javax.swing.JTextField txtEmployeeUser;
-    public javax.swing.JTextField txtPurchaseID;
-    public javax.swing.JTextField txtPurchasePrice;
-    public javax.swing.JTextField txtPurchasePrice1;
-    public javax.swing.JTextField txtPurchaseProductID;
-    public javax.swing.JTextField txtPurchaseProductQuantity;
-    public javax.swing.JTextField txtPurchaseReport;
-    public javax.swing.JTextField txtPurchaseTotal;
-    public javax.swing.JTextField txtSearchCustomer;
+    public javax.swing.JTextField txtFieldAngulo;
+    public javax.swing.JTextField txtFieldECharge;
+    public javax.swing.JTextField txtFieldEDirection;
+    public javax.swing.JTextField txtFieldEDistance;
+    public javax.swing.JTextField txtFieldEID;
+    public javax.swing.JTextField txtFuerzaID;
+    public javax.swing.JTextField txtPotencialEDistancia;
+    public javax.swing.JTextField txtPotencialEID;
+    public javax.swing.JTextField txtResultadoCampoE;
+    public javax.swing.JTextField txtResultadoLeyCoulomb;
+    public javax.swing.JTextField txtResultadoPotencialE;
     public javax.swing.JTextField txtSearchDevice;
     public javax.swing.JTextField txtSearchEmployee;
-    public javax.swing.JTextField txtSearchSupplier;
-    public javax.swing.JTextField txtSupplierAddress;
-    public javax.swing.JTextField txtSupplierCity;
-    public javax.swing.JTextField txtSupplierDescription;
-    public javax.swing.JTextField txtSupplierID;
-    public javax.swing.JTextField txtSupplierMail;
-    public javax.swing.JTextField txtSupplierName;
-    public javax.swing.JTextField txtSupplierTelephone;
+    public javax.swing.JTextField txtTorqueAngulo;
+    public javax.swing.JTextField txtTorqueCarga;
+    public javax.swing.JTextField txtTorqueDistancia;
+    public javax.swing.JTextField txtTorqueID;
+    public javax.swing.JTextField txtTorqueResultado;
     // End of variables declaration//GEN-END:variables
 }

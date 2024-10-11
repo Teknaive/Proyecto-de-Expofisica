@@ -1,34 +1,41 @@
 package Models;
 
+/**
+ * Clase que representa el consumo eléctrico de un aparato.
+ */
 public class ElectricConsume {
 
-    private Integer ID;
-    private String electricAppliance; //Aparato que consume electricidad
-    private Double electricPower; //Potencia 
-    private Double deviceTime; //Tiempo de uso
-    private Double electricityTariff; //Tarifa electrica
-    private Double result;
-    private String user;
+    // Atributos privados para encapsulamiento
+    private Integer id;
+    private String electricAppliance; // Aparato que consume electricidad
+    private Double electricPower; // Potencia en vatios
+    private Double deviceTime; // Tiempo de uso en horas
+    private Double electricityTariff; // Tarifa eléctrica en moneda local por kWh
+    private Double result; // Resultado del cálculo de consumo
+    private String user; // Usuario asociado
 
+    // Constructor por defecto
     public ElectricConsume() {
     }
 
-    public ElectricConsume(Integer ID, String electricAppliance, Double electricPower, Double deviceTime, Double electricityTariff, Double result, String user) {
-        this.ID = ID;
+    // Constructor con parámetros
+    public ElectricConsume(Integer id, String electricAppliance, Double electricPower, Double deviceTime, Double electricityTariff, String user) {
+        this.id = id;
         this.electricAppliance = electricAppliance;
         this.electricPower = electricPower;
         this.deviceTime = deviceTime;
         this.electricityTariff = electricityTariff;
-        this.result = result;
         this.user = user;
+        this.result = calculateResult(); // Calcula el resultado automáticamente
     }
 
-    public Integer getID() {
-        return ID;
+    // Métodos getter y setter
+    public Integer getId() {
+        return id;
     }
 
-    public void setID(Integer ID) {
-        this.ID = ID;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getElectricAppliance() {
@@ -79,4 +86,11 @@ public class ElectricConsume {
         this.user = user;
     }
 
+    // Método para calcular el consumo eléctrico
+    private Double calculateResult() {
+        if (electricPower != null && deviceTime != null && electricityTariff != null) {
+            return electricPower * deviceTime * electricityTariff / 1000; // Convierte vatios a kilovatios
+        }
+        return 0.0;
+    }
 }
