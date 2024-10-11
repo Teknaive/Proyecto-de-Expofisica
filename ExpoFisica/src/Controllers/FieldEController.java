@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * ActionListener, MouseListener y KeyListener para manejar eventos.
  */
 public class FieldEController implements ActionListener, MouseListener, KeyListener {
-
+    
     private final Administration administration;
     private final FieldEActions fieldEActions;
     private DefaultTableModel model;
@@ -40,23 +40,24 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
         addMouseListeners();
         addKeyListeners();
     }
-
+    
     private void addActionListeners() {
         administration.btnRegistrarCampo.addActionListener(this);
         administration.btnModificarCampoE.addActionListener(this);
         administration.btnEliminarCampoE.addActionListener(this);
         administration.btnCancelarCampo.addActionListener(this);
     }
-
+    
     private void addMouseListeners() {
         administration.lblCampoE.addMouseListener(this);
         administration.CamposTable.addMouseListener(this);
     }
-
+    
     private void addKeyListeners() {
         administration.txtFieldAngulo.addKeyListener(this);
         administration.txtFieldEDistance.addKeyListener(this);
         administration.txtFieldECharge.addKeyListener(this);
+        administration.txtFieldEDirection.addKeyListener(this);
     }
 
     /**
@@ -134,14 +135,14 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
         }
         return true;
     }
-
+    
     private boolean validateFieldInputsTwo() {
         if (!fieldEActions.isDoubleString(administration.txtFieldECharge.getText().trim())) {
-
+            
             return false;
         }
         if (!fieldEActions.isDoubleString(administration.txtFieldEDistance.getText().trim())) {
-
+            
             return false;
         }
         return fieldEActions.isDoubleString(administration.txtFieldAngulo.getText().trim());
@@ -207,7 +208,7 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
             administration.cmbCampoE3.addItem(String.valueOf(row[5]));
         }
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
@@ -236,7 +237,7 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
             administration.btnRegistrarCampo.setEnabled(true);
         }
     }
-
+    
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == administration.CamposTable) {
@@ -252,36 +253,37 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
             administration.jTabbedPanePanels.setSelectedIndex(1);
         }
     }
-
+    
     @Override
     public void mousePressed(MouseEvent e) {
     }
-
+    
     @Override
     public void mouseReleased(MouseEvent e) {
     }
-
+    
     @Override
     public void mouseEntered(MouseEvent e) {
     }
-
+    
     @Override
     public void mouseExited(MouseEvent e) {
     }
-
+    
     @Override
     public void keyTyped(KeyEvent e) {
     }
-
+    
     @Override
     public void keyPressed(KeyEvent e) {
     }
-
+    
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getSource() == administration.txtFieldECharge
                 || e.getSource() == administration.txtFieldEDistance
-                || e.getSource() == administration.txtFieldAngulo) {
+                || e.getSource() == administration.txtFieldAngulo
+                || e.getSource() == administration.txtFieldEDirection) {
             if (!areFieldsEmpty() && validateFieldInputsTwo()) {
                 double k = 8.99e9; // Constante de Coulomb
                 double cargaQ = Double.parseDouble(administration.txtFieldECharge.getText().trim());
@@ -294,7 +296,7 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
                 double Ex = magnitud * Math.cos(anguloRadianes);
                 double Ey = magnitud * Math.sin(anguloRadianes);
                 double campoElectricoResultante = Math.sqrt(Ex * Ex + Ey * Ey);
-
+                
                 administration.txtResultadoCampoE.setText(String.valueOf(campoElectricoResultante));
             }
         }
