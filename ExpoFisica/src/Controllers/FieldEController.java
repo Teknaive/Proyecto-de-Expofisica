@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.DecimalFormat;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -19,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * ActionListener, MouseListener y KeyListener para manejar eventos.
  */
 public class FieldEController implements ActionListener, MouseListener, KeyListener {
-    
+
     private final Administration administration;
     private final FieldEActions fieldEActions;
     private DefaultTableModel model;
@@ -40,19 +41,19 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
         addMouseListeners();
         addKeyListeners();
     }
-    
+
     private void addActionListeners() {
         administration.btnRegistrarCampo.addActionListener(this);
         administration.btnModificarCampoE.addActionListener(this);
         administration.btnEliminarCampoE.addActionListener(this);
         administration.btnCancelarCampo.addActionListener(this);
     }
-    
+
     private void addMouseListeners() {
         administration.lblCampoE.addMouseListener(this);
         administration.CamposTable.addMouseListener(this);
     }
-    
+
     private void addKeyListeners() {
         administration.txtFieldAngulo.addKeyListener(this);
         administration.txtFieldEDistance.addKeyListener(this);
@@ -108,7 +109,7 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
                     Double.parseDouble(administration.txtFieldEDistance.getText().trim()),
                     Double.parseDouble(administration.txtFieldAngulo.getText().trim()),
                     administration.txtFieldEDirection.getText().trim(),
-                    Double.parseDouble(administration.txtResultadoCampoE.getText().trim())
+                    calcularCampoResultante()
             );
             refreshConsumeData();
             JOptionPane.showMessageDialog(null, "Campo eléctrico registrado con éxito.");
@@ -135,14 +136,14 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
         }
         return true;
     }
-    
+
     private boolean validateFieldInputsTwo() {
         if (!fieldEActions.isDoubleString(administration.txtFieldECharge.getText().trim())) {
-            
+
             return false;
         }
         if (!fieldEActions.isDoubleString(administration.txtFieldEDistance.getText().trim())) {
-            
+
             return false;
         }
         return fieldEActions.isDoubleString(administration.txtFieldAngulo.getText().trim());
@@ -158,7 +159,7 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
                     Double.parseDouble(administration.txtFieldEDistance.getText().trim()),
                     Double.parseDouble(administration.txtFieldAngulo.getText().trim()),
                     administration.txtFieldEDirection.getText().trim(),
-                    Double.parseDouble(administration.txtResultadoCampoE.getText().trim())
+                    calcularCampoResultante()
             );
             refreshConsumeData();
             administration.btnRegistrarCampo.setEnabled(true);
@@ -208,7 +209,7 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
             administration.cmbCampoE3.addItem(String.valueOf(row[5]));
         }
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
@@ -237,7 +238,7 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
             administration.btnRegistrarCampo.setEnabled(true);
         }
     }
-    
+
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == administration.CamposTable) {
@@ -247,37 +248,43 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
             administration.txtFieldEDirection.setText(administration.CamposTable.getValueAt(row, 2).toString());
             administration.txtFieldEDistance.setText(administration.CamposTable.getValueAt(row, 3).toString());
             administration.txtFieldAngulo.setText(administration.CamposTable.getValueAt(row, 4).toString());
-            administration.txtResultadoCampoE.setText(administration.CamposTable.getValueAt(row, 5).toString());
+
+            // Formatear el resultado en notación científica
+            DecimalFormat formatoCientifico = new DecimalFormat("0.###E0");
+            double campoElectricoResultante = Double.parseDouble(administration.CamposTable.getValueAt(row, 5).toString().trim());
+            String resultadoFormateado = formatoCientifico.format(campoElectricoResultante);
+
+            administration.txtResultadoCampoE.setText(resultadoFormateado);
             administration.btnRegistrarCampo.setEnabled(false);
         } else if (e.getSource() == administration.lblCampoE) {
             administration.jTabbedPanePanels.setSelectedIndex(1);
         }
     }
-    
+
     @Override
     public void mousePressed(MouseEvent e) {
     }
-    
+
     @Override
     public void mouseReleased(MouseEvent e) {
     }
-    
+
     @Override
     public void mouseEntered(MouseEvent e) {
     }
-    
+
     @Override
     public void mouseExited(MouseEvent e) {
     }
-    
+
     @Override
     public void keyTyped(KeyEvent e) {
     }
-    
+
     @Override
     public void keyPressed(KeyEvent e) {
     }
-    
+
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getSource() == administration.txtFieldECharge
@@ -285,20 +292,28 @@ public class FieldEController implements ActionListener, MouseListener, KeyListe
                 || e.getSource() == administration.txtFieldAngulo
                 || e.getSource() == administration.txtFieldEDirection) {
             if (!areFieldsEmpty() && validateFieldInputsTwo()) {
-                double k = 8.99e9; // Constante de Coulomb
-                double cargaQ = Double.parseDouble(administration.txtFieldECharge.getText().trim());
-                double distanciaR = Double.parseDouble(administration.txtFieldEDistance.getText().trim());
-                double anguloA = Double.parseDouble(administration.txtFieldAngulo.getText().trim());
+                double campoElectricoResultante = calcularCampoResultante();
+                // Formatear el resultado en notación científica
+                DecimalFormat formatoCientifico = new DecimalFormat("0.###E0");
+                String resultadoFormateado = formatoCientifico.format(campoElectricoResultante);
 
-                // Convertir ángulo a radianes y calcular componentes del campo eléctrico
-                double anguloRadianes = Math.toRadians(anguloA);
-                double magnitud = (k * Math.abs(cargaQ)) / (distanciaR * distanciaR);
-                double Ex = magnitud * Math.cos(anguloRadianes);
-                double Ey = magnitud * Math.sin(anguloRadianes);
-                double campoElectricoResultante = Math.sqrt(Ex * Ex + Ey * Ey);
-                
-                administration.txtResultadoCampoE.setText(String.valueOf(campoElectricoResultante));
+                administration.txtResultadoCampoE.setText(resultadoFormateado);
             }
         }
+    }
+
+    private double calcularCampoResultante() {
+        double k = 8.99e9; // Constante de Coulomb
+        double cargaQ = Double.parseDouble(administration.txtFieldECharge.getText().trim());
+        double distanciaR = Double.parseDouble(administration.txtFieldEDistance.getText().trim());
+        double anguloA = Double.parseDouble(administration.txtFieldAngulo.getText().trim());
+
+        // Convertir ángulo a radianes y calcular componentes del campo eléctrico
+        double anguloRadianes = Math.toRadians(anguloA);
+        double magnitud = (k * Math.abs(cargaQ)) / (distanciaR * distanciaR);
+        double Ex = magnitud * Math.cos(anguloRadianes);
+        double Ey = magnitud * Math.sin(anguloRadianes);
+        double campoElectricoResultante = Math.sqrt(Ex * Ex + Ey * Ey);
+        return campoElectricoResultante;
     }
 }
