@@ -17,7 +17,7 @@ public class Login extends javax.swing.JFrame implements GraphicalConfiguration 
     public Login() throws UnsupportedLookAndFeelException {
         initComponents(); // Initialize the components of the JFrame
         // Apply personal settings to the frame, including title, dimensions, and icon image
-        framePersonalSettings(this, "Pharmacy Administrator", 990, 560, "Images/Designer (3).png");
+        framePersonalSettings(this, "Calculadora de electricidad", 990, 560, "Images/Designer (3).png");
 
         // Initialize the LoginController with employee actions and the current frame
         LoginController loginController = new LoginController(employeeActions, this);

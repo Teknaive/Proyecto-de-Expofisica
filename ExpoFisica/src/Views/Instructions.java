@@ -15,7 +15,7 @@ public class Instructions extends javax.swing.JFrame implements GraphicalConfigu
     public Instructions() throws UnsupportedLookAndFeelException {
         initComponents(); // Initialize the components of the JFrame
         // Apply personal settings to the frame, including title, size, and icon image
-        framePersonalSettings(this, "Pharmacy Administrator", 650, 580, "Images/Designer (3).png");
+        framePersonalSettings(this, "Calculadora de electricidad", 650, 580, "Images/Designer (3).png");
 
         // Initialize instructions configurations with the current frame and employee actions
         InstructionsConfigurations instructionsConfigurations = new InstructionsConfigurations(this, employeeActions);

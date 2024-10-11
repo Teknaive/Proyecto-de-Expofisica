@@ -17,7 +17,7 @@ public class Register extends javax.swing.JFrame implements GraphicalConfigurati
     public Register() throws UnsupportedLookAndFeelException {
         initComponents(); // Initialize the components of the JFrame
         // Apply personal settings to the frame, including title, dimensions, and icon image
-        framePersonalSettings(this, "Pharmacy Administrator", 1190, 555, "Images/Designer (3).png");
+        framePersonalSettings(this, "Calculadora de electricidad", 1190, 555, "Images/Designer (3).png");
 
         // Create an instance of RegisterController to manage registration actions for this form
         RegisterController registerController = new RegisterController(this, employeeActions);
