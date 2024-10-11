@@ -212,7 +212,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/ImagePurchases (1).png"/>
+                      <Image iconType="3" name="/Images/CampoEIMG(1).jpeg"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Campos E."/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -264,7 +264,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/ImageClients (1).png"/>
+                      <Image iconType="3" name="/Images/Designer (2)(1).jpeg"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Ley de Coulomb"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -368,7 +368,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/ImageSuppliers (1).png"/>
+                      <Image iconType="3" name="/Images/Designer (2)(1)_1.jpeg"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Torque"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -420,7 +420,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/ImageCategories (1).png"/>
+                      <Image iconType="3" name="/Images/Designer (4)(1).jpeg"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Potencial E."/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -2515,10 +2515,10 @@
                                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                                       <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtEmployeeID" pref="149" max="32767" attributes="0"/>
+                                      <Component id="txtEmployeeID" pref="161" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="91" max="32767" attributes="0"/>
+                              <EmptySpace pref="79" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2648,7 +2648,7 @@
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Name:"/>
+                        <Property name="text" type="java.lang.String" value="Nombre:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEmployeeName">
@@ -2739,7 +2739,7 @@
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Mail:"/>
+                        <Property name="text" type="java.lang.String" value="Email:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEmployeeEmail">
@@ -2785,7 +2785,7 @@
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Address:"/>
+                        <Property name="text" type="java.lang.String" value="Direccion:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEmployeeAddress">
@@ -4678,7 +4678,7 @@
                         </Property>
                         <Property name="lineWrap" type="boolean" value="true"/>
                         <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="# User Guide for Pharmacy Management Application&#xa;&#xa;## Roles and Permissions&#xa;&#xa;### Owner and Administrators&#xa;- **Owner**: Full access to all functions.&#xa;- **Administrators**: Same permissions as the owner, designated by the owner.&#xa;&#xa;### Auxiliaries&#xa;- Limited access to functions related to:&#xa;  - Product purchases or inquiries.&#xa;  - Queries regarding suppliers, customers, and reports.&#xa;&#xa;## Registration&#xa;&#xa;To start using the application, you need to register. The registration button will be disabled after you register, so ensure you choose a username, password, and other details carefully. Upon registration, you will assume the role of the Owner.&#xa;&#xa;### Steps to Register:&#xa;1. Navigate to the login window (the one with the image of a vase).&#xa;2. Click the &quot;Sign up&quot; button.&#xa;3. In the registration window (the one with the image of a building), fill in your details.&#xa;4. Read the terms and conditions (recommended).&#xa;5. Press the &quot;Register&quot; button.&#xa;&#xa;## Logging In&#xa;&#xa;### Steps to Log In:&#xa;1. Enter your username and password in the login window.&#xa;2. Press &quot;Start.&quot;&#xa;&#xa;## Navigating the Application&#xa;&#xa;Upon logging in, you will be redirected to the administration panel.&#xa;&#xa;### Navigation:&#xa;- A menu on the left side contains various sections.&#xa;- To navigate, hover over a section label and click to be redirected to the corresponding panel.&#xa;&#xa;## Cancelling Actions&#xa;&#xa;Each section has a &quot;Cancel&quot; button. Press it to stop the current action and clear the fields.&#xa;&#xa;## Employee Management&#xa;&#xa;### Registering an Employee:&#xa;1. Go to the employee panel in the Administration window.&#xa;2. Click on the employee section in the left menu.&#xa;3. Fill in the employee&apos;s details and select their role (Administrator or Assistant).&#xa;4. Press the &quot;Register&quot; button.&#xa;&#xa;### Modifying an Employee:&#xa;1. In the employee panel, select the employee you wish to modify.&#xa;2. Update the fields with the new details.&#xa;3. Press the &quot;Modify&quot; button.&#xa;&#xa;### Deleting an Employee:&#xa;1. In the employee panel, select the employee you wish to delete.&#xa;2. Press the &quot;Delete&quot; button.&#xa;&#xa;## Customer Management&#xa;&#xa;### Registering a Customer:&#xa;1. Go to the customer panel in the Administration window.&#xa;2. Click on the customer section in the left menu.&#xa;3. Fill in the customer&apos;s details.&#xa;4. Press the &quot;Register&quot; button.&#xa;&#xa;### Modifying a Customer:&#xa;1. In the customer panel, select the customer you wish to modify.&#xa;2. Update the fields with the new details.&#xa;3. Press the &quot;Modify&quot; button.&#xa;&#xa;### Deleting a Customer:&#xa;1. In the customer panel, select the customer you wish to delete.&#xa;2. Press the &quot;Delete&quot; button.&#xa;&#xa;## Supplier Management&#xa;&#xa;### Registering a Supplier:&#xa;1. Go to the supplier panel in the Administration window.&#xa;2. Click on the supplier section in the left menu.&#xa;3. Fill in the supplier&apos;s details.&#xa;4. Press the &quot;Register&quot; button.&#xa;&#xa;### Modifying a Supplier:&#xa;1. In the supplier panel, select the supplier you wish to modify.&#xa;2. Update the fields with the new details.&#xa;3. Press the &quot;Modify&quot; button.&#xa;&#xa;### Deleting a Supplier:&#xa;1. In the supplier panel, select the supplier you wish to delete.&#xa;2. Press the &quot;Delete&quot; button.&#xa;&#xa;## Category Management&#xa;&#xa;### Registering a Category:&#xa;1. Go to the category panel in the Administration window.&#xa;2. Click on the category section in the left menu.&#xa;3. Enter the category name and other details.&#xa;4. Press the &quot;Register&quot; button.&#xa;&#xa;### Modifying a Category:&#xa;1. In the category panel, select the category you wish to modify.&#xa;2. Update the fields with the new details.&#xa;3. Press the &quot;Modify&quot; button.&#xa;&#xa;### Deleting a Category:&#xa;1. In the category panel, select the category you wish to delete.&#xa;2. Press the &quot;Delete&quot; button.&#xa;&#xa;## Product Management&#xa;&#xa;### Registering a Product:&#xa;1. Ensure you have at least one category registered.&#xa;2. Go to the product panel.&#xa;3. Fill in the product details and select its category.&#xa;4. Press the &quot;Register&quot; button.&#xa;&#xa;### Modifying a Product:&#xa;1. In the product panel, select the product you wish to modify.&#xa;2. Update the fields with the new details.&#xa;3. Press the &quot;Modify&quot; button.&#xa;&#xa;### Deleting a Product:&#xa;1. In the product panel, select the product you wish to delete.&#xa;2. Press the &quot;Delete&quot; button.&#xa;&#xa;## Purchases&#xa;&#xa;### Registering Purchases in Process:&#xa;1. Ensure you have at least one product, customer, and supplier registered.&#xa;2. Go to the purchase panel.&#xa;3. Select the product, customer, and supplier, then fill in the &quot;Quantity&quot; field.&#xa;4. Click &quot;Add&quot; to finalize each purchase.&#xa;5. Click &quot;Buy&quot; to complete and record the purchase in the Reports section.&#xa;&#xa;### Deleting a Purchase in Process:&#xa;1. Select the purchase in process you wish to delete.&#xa;2. Press the &quot;Delete&quot; button."/>
+                        <Property name="text" type="java.lang.String" value="# Gu&#xed;a del usuario para la aplicaci&#xf3;n de calculadora de electricidad&#xa;&#xa;## Roles y permisos&#xa;&#xa;### Propietario y administradores&#xa;- **Propietario**: Acceso total a todas las funciones.&#xa;- **Administradores**: Mismos permisos que el propietario, designados por este.&#xa;&#xa;## Registro&#xa;&#xa;Para comenzar a utilizar la aplicaci&#xf3;n, es necesario registrarse. El bot&#xf3;n de registro se desactivar&#xe1; una vez que complete el proceso, as&#xed; que aseg&#xfa;rese de elegir un nombre de usuario, contrase&#xf1;a y otros detalles cuidadosamente. Una vez registrado, asumir&#xe1; el rol de Propietario.&#xa;&#xa;### Pasos para registrarse:&#xa;1. Navegue hasta la ventana de inicio de sesi&#xf3;n.&#xa;2. Haga clic en el bot&#xf3;n &#xab;Registrarse&#xbb;.&#xa;3. En la ventana de registro, complete sus datos.&#xa;4. Lea los t&#xe9;rminos y condiciones (recomendado).&#xa;5. Pulse el bot&#xf3;n &#xab;Registrarse&#xbb;.&#xa;&#xa;## Iniciar sesi&#xf3;n&#xa;&#xa;### Pasos para iniciar sesi&#xf3;n:&#xa;1. Introduzca su nombre de usuario y contrase&#xf1;a en la ventana de inicio de sesi&#xf3;n.&#xa;2. Pulse &#xab;Iniciar&#xbb;.&#xa;&#xa;## Navegaci&#xf3;n por la aplicaci&#xf3;n&#xa;&#xa;Al iniciar sesi&#xf3;n, ser&#xe1; redirigido al panel principal.&#xa;&#xa;### Navegaci&#xf3;n:&#xa;- Un men&#xfa; en la parte izquierda contiene varias secciones.&#xa;- Para navegar, pase el rat&#xf3;n sobre la etiqueta de una secci&#xf3;n y pulse para ser redirigido al panel correspondiente.&#xa;&#xa;## Cancelaci&#xf3;n de acciones&#xa;&#xa;Cada secci&#xf3;n tiene un bot&#xf3;n &#xab;Cancelar&#xbb;. P&#xfa;lselo para detener la acci&#xf3;n actual y borrar los campos.&#xa;&#xa;## C&#xe1;lculos el&#xe9;ctricos&#xa;&#xa;### Calcular el consumo el&#xe9;ctrico:&#xa;1. Vaya al panel de c&#xe1;lculo en la ventana principal.&#xa;2. Ingrese los datos del aparato (potencia, horas de uso, etc.) en los campos correspondientes.&#xa;3. Pulse el bot&#xf3;n &#xab;Registrar&#xbb; para obtener el consumo el&#xe9;ctrico.&#xa;&#xa;### Calcular la fuerza el&#xe9;ctrica:&#xa;1. Seleccione la opci&#xf3;n para calcular fuerza el&#xe9;ctrica en el men&#xfa;.&#xa;2. Ingrese los valores necesarios.&#xa;3. Pulse &#xab;Registrar&#xbb; para obtener el resultado.&#xa;&#xa;### Calcular el potencial el&#xe9;ctrico:&#xa;1. Dir&#xed;gete a la secci&#xf3;n de potencial el&#xe9;ctrico.&#xa;2. Introduzca los datos requeridos.&#xa;3. Haga clic en &#xab;Registrar&#xbb; para ver el resultado.&#xa;&#xa;### Calcular el torque:&#xa;1. Acceda a la secci&#xf3;n de c&#xe1;lculo de torque.&#xa;2. Ingrese los valores necesarios.&#xa;3. Pulse el bot&#xf3;n &#xab;Registrar&#xbb; para obtener el torque.&#xa;&#xa;## Gesti&#xf3;n de usuarios&#xa;&#xa;### Dar de alta a un usuario:&#xa;1. Vaya al panel de usuarios en la ventana principal.&#xa;2. Haga clic en la secci&#xf3;n correspondiente en el men&#xfa;.&#xa;3. Rellene los datos del nuevo usuario y seleccione su rol (Administrador).&#xa;4. Pulse el bot&#xf3;n &#xab;Registrar&#xbb;.&#xa;&#xa;### Modificar un usuario:&#xa;1. En el panel de usuarios, seleccione el usuario que desea modificar.&#xa;2. Actualice los campos con los nuevos datos.&#xa;3. Pulse el bot&#xf3;n &#xab;Modificar&#xbb;.&#xa;&#xa;### Borrar un usuario:&#xa;1. En el panel de usuarios, seleccione el usuario que desea eliminar.&#xa;2. Pulse el bot&#xf3;n &#xab;Eliminar&#xbb;.&#xa;"/>
                         <Property name="wrapStyleWord" type="boolean" value="true"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">

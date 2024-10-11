@@ -76,7 +76,7 @@ public class Login extends javax.swing.JFrame implements GraphicalConfiguration 
         lblPassword.setBackground(new java.awt.Color(255, 255, 255));
         lblPassword.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(0, 0, 0));
-        lblPassword.setText("Password:");
+        lblPassword.setText("Contraseña:");
 
         txtPassword.setBackground(new java.awt.Color(255, 255, 255));
         txtPassword.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
@@ -87,7 +87,7 @@ public class Login extends javax.swing.JFrame implements GraphicalConfiguration 
         btnStart.setBackground(new java.awt.Color(255, 255, 255));
         btnStart.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 25)); // NOI18N
         btnStart.setForeground(new java.awt.Color(0, 0, 0));
-        btnStart.setText("Start");
+        btnStart.setText("Empezar");
         btnStart.setBorder(null);
         btnStart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnStart.addActionListener(new java.awt.event.ActionListener() {
@@ -105,14 +105,14 @@ public class Login extends javax.swing.JFrame implements GraphicalConfiguration 
         txtBiblePassage.setForeground(new java.awt.Color(0, 0, 0));
         txtBiblePassage.setLineWrap(true);
         txtBiblePassage.setRows(5);
-        txtBiblePassage.setText("The user is advised to read the instructions for use before logging in.\n");
+        txtBiblePassage.setText("Se recomienda al usuario que lea las instrucciones de uso antes de conectarse.\n");
         txtBiblePassage.setWrapStyleWord(true);
         jScrollPaneOne.setViewportView(txtBiblePassage);
 
         btnInstructions.setBackground(new java.awt.Color(255, 255, 255));
         btnInstructions.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 25)); // NOI18N
         btnInstructions.setForeground(new java.awt.Color(0, 0, 0));
-        btnInstructions.setText("Instructions");
+        btnInstructions.setText("Instrucciones");
         btnInstructions.setBorder(null);
         btnInstructions.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInstructions.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +124,7 @@ public class Login extends javax.swing.JFrame implements GraphicalConfiguration 
         btnRegister.setBackground(new java.awt.Color(255, 255, 255));
         btnRegister.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 25)); // NOI18N
         btnRegister.setForeground(new java.awt.Color(0, 0, 0));
-        btnRegister.setText("Sign up");
+        btnRegister.setText("Registrarse");
         btnRegister.setBorder(null);
         btnRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
@@ -136,7 +136,7 @@ public class Login extends javax.swing.JFrame implements GraphicalConfiguration 
         btnTermsAndConditions.setBackground(new java.awt.Color(255, 255, 255));
         btnTermsAndConditions.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         btnTermsAndConditions.setForeground(new java.awt.Color(0, 0, 0));
-        btnTermsAndConditions.setText("Terms and Conditions");
+        btnTermsAndConditions.setText("Terminos y condiciones");
         btnTermsAndConditions.setBorder(null);
         btnTermsAndConditions.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 

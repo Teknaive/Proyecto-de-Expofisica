@@ -280,7 +280,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         lblCampoE.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
         lblCampoE.setForeground(new java.awt.Color(255, 255, 255));
         lblCampoE.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCampoE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ImagePurchases (1).png"))); // NOI18N
+        lblCampoE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CampoEIMG(1).jpeg"))); // NOI18N
         lblCampoE.setText("Campos E.");
         lblCampoE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -302,7 +302,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         lblLeyCoulomb.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
         lblLeyCoulomb.setForeground(new java.awt.Color(255, 255, 255));
         lblLeyCoulomb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLeyCoulomb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ImageClients (1).png"))); // NOI18N
+        lblLeyCoulomb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Designer (2)(1).jpeg"))); // NOI18N
         lblLeyCoulomb.setText("Ley de Coulomb");
         lblLeyCoulomb.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -346,7 +346,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         lblTorque.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
         lblTorque.setForeground(new java.awt.Color(255, 255, 255));
         lblTorque.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTorque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ImageSuppliers (1).png"))); // NOI18N
+        lblTorque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Designer (2)(1)_1.jpeg"))); // NOI18N
         lblTorque.setText("Torque");
         lblTorque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -368,7 +368,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         lblPotencialE.setFont(new java.awt.Font("Microsoft Tai Le", 1, 20)); // NOI18N
         lblPotencialE.setForeground(new java.awt.Color(255, 255, 255));
         lblPotencialE.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPotencialE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ImageCategories (1).png"))); // NOI18N
+        lblPotencialE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Designer (4)(1).jpeg"))); // NOI18N
         lblPotencialE.setText("Potencial E.");
         lblPotencialE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -1297,7 +1297,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jLabel38.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(0, 0, 0));
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel38.setText("Name:");
+        jLabel38.setText("Nombre:");
 
         txtEmployeeName.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeName.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
@@ -1325,7 +1325,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jLabel40.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(0, 0, 0));
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel40.setText("Mail:");
+        jLabel40.setText("Email:");
 
         txtEmployeeEmail.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeEmail.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
@@ -1340,7 +1340,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jLabel41.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(0, 0, 0));
         jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel41.setText("Address:");
+        jLabel41.setText("Direccion:");
 
         txtEmployeeAddress.setBackground(new java.awt.Color(255, 255, 255));
         txtEmployeeAddress.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
@@ -1440,8 +1440,8 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
                         .addGap(48, 48, 48)
                         .addComponent(jLabel43)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEmployeeID, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                        .addComponent(txtEmployeeID, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2224,7 +2224,7 @@ public class Administration extends javax.swing.JFrame implements GraphicalConfi
         jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("# User Guide for Pharmacy Management Application\n\n## Roles and Permissions\n\n### Owner and Administrators\n- **Owner**: Full access to all functions.\n- **Administrators**: Same permissions as the owner, designated by the owner.\n\n### Auxiliaries\n- Limited access to functions related to:\n  - Product purchases or inquiries.\n  - Queries regarding suppliers, customers, and reports.\n\n## Registration\n\nTo start using the application, you need to register. The registration button will be disabled after you register, so ensure you choose a username, password, and other details carefully. Upon registration, you will assume the role of the Owner.\n\n### Steps to Register:\n1. Navigate to the login window (the one with the image of a vase).\n2. Click the \"Sign up\" button.\n3. In the registration window (the one with the image of a building), fill in your details.\n4. Read the terms and conditions (recommended).\n5. Press the \"Register\" button.\n\n## Logging In\n\n### Steps to Log In:\n1. Enter your username and password in the login window.\n2. Press \"Start.\"\n\n## Navigating the Application\n\nUpon logging in, you will be redirected to the administration panel.\n\n### Navigation:\n- A menu on the left side contains various sections.\n- To navigate, hover over a section label and click to be redirected to the corresponding panel.\n\n## Cancelling Actions\n\nEach section has a \"Cancel\" button. Press it to stop the current action and clear the fields.\n\n## Employee Management\n\n### Registering an Employee:\n1. Go to the employee panel in the Administration window.\n2. Click on the employee section in the left menu.\n3. Fill in the employee's details and select their role (Administrator or Assistant).\n4. Press the \"Register\" button.\n\n### Modifying an Employee:\n1. In the employee panel, select the employee you wish to modify.\n2. Update the fields with the new details.\n3. Press the \"Modify\" button.\n\n### Deleting an Employee:\n1. In the employee panel, select the employee you wish to delete.\n2. Press the \"Delete\" button.\n\n## Customer Management\n\n### Registering a Customer:\n1. Go to the customer panel in the Administration window.\n2. Click on the customer section in the left menu.\n3. Fill in the customer's details.\n4. Press the \"Register\" button.\n\n### Modifying a Customer:\n1. In the customer panel, select the customer you wish to modify.\n2. Update the fields with the new details.\n3. Press the \"Modify\" button.\n\n### Deleting a Customer:\n1. In the customer panel, select the customer you wish to delete.\n2. Press the \"Delete\" button.\n\n## Supplier Management\n\n### Registering a Supplier:\n1. Go to the supplier panel in the Administration window.\n2. Click on the supplier section in the left menu.\n3. Fill in the supplier's details.\n4. Press the \"Register\" button.\n\n### Modifying a Supplier:\n1. In the supplier panel, select the supplier you wish to modify.\n2. Update the fields with the new details.\n3. Press the \"Modify\" button.\n\n### Deleting a Supplier:\n1. In the supplier panel, select the supplier you wish to delete.\n2. Press the \"Delete\" button.\n\n## Category Management\n\n### Registering a Category:\n1. Go to the category panel in the Administration window.\n2. Click on the category section in the left menu.\n3. Enter the category name and other details.\n4. Press the \"Register\" button.\n\n### Modifying a Category:\n1. In the category panel, select the category you wish to modify.\n2. Update the fields with the new details.\n3. Press the \"Modify\" button.\n\n### Deleting a Category:\n1. In the category panel, select the category you wish to delete.\n2. Press the \"Delete\" button.\n\n## Product Management\n\n### Registering a Product:\n1. Ensure you have at least one category registered.\n2. Go to the product panel.\n3. Fill in the product details and select its category.\n4. Press the \"Register\" button.\n\n### Modifying a Product:\n1. In the product panel, select the product you wish to modify.\n2. Update the fields with the new details.\n3. Press the \"Modify\" button.\n\n### Deleting a Product:\n1. In the product panel, select the product you wish to delete.\n2. Press the \"Delete\" button.\n\n## Purchases\n\n### Registering Purchases in Process:\n1. Ensure you have at least one product, customer, and supplier registered.\n2. Go to the purchase panel.\n3. Select the product, customer, and supplier, then fill in the \"Quantity\" field.\n4. Click \"Add\" to finalize each purchase.\n5. Click \"Buy\" to complete and record the purchase in the Reports section.\n\n### Deleting a Purchase in Process:\n1. Select the purchase in process you wish to delete.\n2. Press the \"Delete\" button.");
+        jTextArea1.setText("# Guía del usuario para la aplicación de calculadora de electricidad\n\n## Roles y permisos\n\n### Propietario y administradores\n- **Propietario**: Acceso total a todas las funciones.\n- **Administradores**: Mismos permisos que el propietario, designados por este.\n\n## Registro\n\nPara comenzar a utilizar la aplicación, es necesario registrarse. El botón de registro se desactivará una vez que complete el proceso, así que asegúrese de elegir un nombre de usuario, contraseña y otros detalles cuidadosamente. Una vez registrado, asumirá el rol de Propietario.\n\n### Pasos para registrarse:\n1. Navegue hasta la ventana de inicio de sesión.\n2. Haga clic en el botón «Registrarse».\n3. En la ventana de registro, complete sus datos.\n4. Lea los términos y condiciones (recomendado).\n5. Pulse el botón «Registrarse».\n\n## Iniciar sesión\n\n### Pasos para iniciar sesión:\n1. Introduzca su nombre de usuario y contraseña en la ventana de inicio de sesión.\n2. Pulse «Iniciar».\n\n## Navegación por la aplicación\n\nAl iniciar sesión, será redirigido al panel principal.\n\n### Navegación:\n- Un menú en la parte izquierda contiene varias secciones.\n- Para navegar, pase el ratón sobre la etiqueta de una sección y pulse para ser redirigido al panel correspondiente.\n\n## Cancelación de acciones\n\nCada sección tiene un botón «Cancelar». Púlselo para detener la acción actual y borrar los campos.\n\n## Cálculos eléctricos\n\n### Calcular el consumo eléctrico:\n1. Vaya al panel de cálculo en la ventana principal.\n2. Ingrese los datos del aparato (potencia, horas de uso, etc.) en los campos correspondientes.\n3. Pulse el botón «Registrar» para obtener el consumo eléctrico.\n\n### Calcular la fuerza eléctrica:\n1. Seleccione la opción para calcular fuerza eléctrica en el menú.\n2. Ingrese los valores necesarios.\n3. Pulse «Registrar» para obtener el resultado.\n\n### Calcular el potencial eléctrico:\n1. Dirígete a la sección de potencial eléctrico.\n2. Introduzca los datos requeridos.\n3. Haga clic en «Registrar» para ver el resultado.\n\n### Calcular el torque:\n1. Acceda a la sección de cálculo de torque.\n2. Ingrese los valores necesarios.\n3. Pulse el botón «Registrar» para obtener el torque.\n\n## Gestión de usuarios\n\n### Dar de alta a un usuario:\n1. Vaya al panel de usuarios en la ventana principal.\n2. Haga clic en la sección correspondiente en el menú.\n3. Rellene los datos del nuevo usuario y seleccione su rol (Administrador).\n4. Pulse el botón «Registrar».\n\n### Modificar un usuario:\n1. En el panel de usuarios, seleccione el usuario que desea modificar.\n2. Actualice los campos con los nuevos datos.\n3. Pulse el botón «Modificar».\n\n### Borrar un usuario:\n1. En el panel de usuarios, seleccione el usuario que desea eliminar.\n2. Pulse el botón «Eliminar».\n");
         jTextArea1.setWrapStyleWord(true);
         jTextArea1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextArea1.setCaretColor(new java.awt.Color(0, 0, 0));

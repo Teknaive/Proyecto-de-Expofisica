@@ -64,7 +64,7 @@ public class Register extends javax.swing.JFrame implements GraphicalConfigurati
         lblRegister.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 35)); // NOI18N
         lblRegister.setForeground(new java.awt.Color(0, 0, 0));
         lblRegister.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRegister.setText("Sign up");
+        lblRegister.setText("Registrarse");
 
         lblImageOne.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ImageRegister (1).jpeg"))); // NOI18N
         lblImageOne.setText("jLabel1");
@@ -83,12 +83,12 @@ public class Register extends javax.swing.JFrame implements GraphicalConfigurati
         lblPassword.setBackground(new java.awt.Color(255, 255, 255));
         lblPassword.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(0, 0, 0));
-        lblPassword.setText("Password:");
+        lblPassword.setText("Contraseña:");
 
         lblAddress.setBackground(new java.awt.Color(255, 255, 255));
         lblAddress.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         lblAddress.setForeground(new java.awt.Color(0, 0, 0));
-        lblAddress.setText("Address:");
+        lblAddress.setText("Direccion:");
 
         txtAddress.setBackground(new java.awt.Color(255, 255, 255));
         txtAddress.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
@@ -99,26 +99,26 @@ public class Register extends javax.swing.JFrame implements GraphicalConfigurati
         jCheckBoxTermsAndConditions.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBoxTermsAndConditions.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 17)); // NOI18N
         jCheckBoxTermsAndConditions.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBoxTermsAndConditions.setText("I accept the terms and conditions.");
+        jCheckBoxTermsAndConditions.setText("Aceptar terminos y condiciones");
         jCheckBoxTermsAndConditions.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBoxTermsAndConditions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnRegister.setBackground(new java.awt.Color(255, 255, 255));
         btnRegister.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 25)); // NOI18N
         btnRegister.setForeground(new java.awt.Color(0, 0, 0));
-        btnRegister.setText("Register");
+        btnRegister.setText("Registrar");
         btnRegister.setBorder(null);
         btnRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblRol.setBackground(new java.awt.Color(255, 255, 255));
         lblRol.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         lblRol.setForeground(new java.awt.Color(0, 0, 0));
-        lblRol.setText("Role:");
+        lblRol.setText("Rol:");
 
         lblName.setBackground(new java.awt.Color(255, 255, 255));
         lblName.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         lblName.setForeground(new java.awt.Color(0, 0, 0));
-        lblName.setText("Name:");
+        lblName.setText("Nombre:");
 
         txtName.setBackground(new java.awt.Color(255, 255, 255));
         txtName.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
@@ -129,7 +129,7 @@ public class Register extends javax.swing.JFrame implements GraphicalConfigurati
         lblEmail.setBackground(new java.awt.Color(255, 255, 255));
         lblEmail.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 20)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(0, 0, 0));
-        lblEmail.setText("Mail:");
+        lblEmail.setText("Email:");
 
         txtEmail.setBackground(new java.awt.Color(255, 255, 255));
         txtEmail.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
